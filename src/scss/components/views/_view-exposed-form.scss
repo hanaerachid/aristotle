@@ -1,0 +1,158 @@
+.views-exposed-form {
+  .form-group {
+    padding: 0;
+
+    legend {
+      font-size: rem($font-size-base);
+      color: $clr-block-title;
+    }
+
+    .form-item {
+      margin: 0;
+    }
+  }
+
+  .form-item {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    // scss-lint:disable QualifyingElement
+    input[type="checkbox"],
+    input[type="radio"] {
+      @include sr-only();
+
+      &:checked {
+        ~ label.option {
+          background-color: $clr-green;
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:disabled {
+        ~ label.option {
+          color: $gray-dark;
+        }
+
+        &:hover {
+          ~ label.option {
+            background-color: $clr-gray-light;
+            cursor: default;
+          }
+        }
+      }
+    }
+    // scss-lint:enable QualifyingElement
+
+    label.option {
+      background-color: $clr-gray-light;
+      border-radius: rem(10);
+      display: block;
+      cursor: pointer;
+      font-weight: $font-weight-bold;
+      margin-bottom: 0;
+      padding: rem(6) rem(25) rem(6) rem(20);
+      position: relative;
+      transition: background-color .3s ease-out;
+
+      &:hover {
+        background-color: $clr-gray-light-D5;
+      }
+
+      &:before {
+        content: '\f15c';
+        display: block;
+        font-family: uicons-regular-rounded;
+        font-size: rem(22);
+        opacity: 0;
+        position: absolute;
+        right: rem(12);
+        top: 50%;
+        transform: translateY(-50%);
+        transition: opacity .3s ease-out;
+      }
+    }
+  }
+
+  .form-items-group {
+    display: flex;
+    margin-bottom: rem(20);
+
+    @include media-breakpoint-down(lg) {
+      margin-bottom: rem(10);
+    }
+
+    > .form-item {
+      flex: 1 1 auto;
+      margin-right: rem(10);
+      margin-bottom: 0 !important;
+    }
+
+    .form-search {
+      margin-top: 0;
+    }
+  }
+
+  .form-search,
+  .form-submit {
+    background-color: $clr-gray-light;
+    border: 1px solid $clr-gray-light-D5;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .form-submit:not(.opigno-create-shared-post) {
+    background: $clr-gray-light url(../images/design/search-gray.svg) center/18px no-repeat;
+    border-radius: 50%;
+    height: rem(33);
+    min-width: rem(33);
+    text-indent: -9999px;
+    width: rem(33);
+
+    &:hover {
+      background-image: url(../images/design/search-navy.svg);
+      border-color: $clr-green;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+
+    .btn {
+      max-width: calc(50% - 5px);
+      min-width: 0;
+      width: 100%;
+    }
+
+    .form-submit {
+      background: $clr-green;
+      box-shadow: none;
+      text-indent: 0;
+      height: auto;
+      width: 100%;
+
+      &:hover {
+        background-image: none;
+        box-shadow: 0 3px 3px rgba($clr-black, .3);
+      }
+    }
+  }
+
+  .btn-reset-filter {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    + .form-submit {
+      margin-left: rem(10);
+    }
+  }
+
+  .show-filter {
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}

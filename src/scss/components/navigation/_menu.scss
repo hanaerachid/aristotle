@@ -1,0 +1,119 @@
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: rem(30);
+  }
+
+  &__item {
+    padding: 0 18px;
+
+    @include media-breakpoint-down(lg) {
+      padding: 0 12px;
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: rem(25);
+      margin-bottom: rem(30);
+    }
+
+    .dropdown {
+      position: static;
+    }
+
+    .dropdown-menu {
+      animation-name: fadeIn;
+      animation-duration: 0.3s;
+      background: $clr-navy;
+      border-radius: 0;
+      box-shadow: none;
+      color: $clr-white;
+      padding: rem(33) 0 rem(24);
+      position: relative;
+      left: 0 !important;
+      top: 100% !important;
+      text-align: left;
+      transform: none !important;
+      width: 100%;
+      z-index: 15;
+
+      .info {
+        padding-right: rem(50);
+
+        h2 {
+          color: $clr-white;
+        }
+      }
+
+      .menu-wrapper {
+        flex: 1 0 auto;
+        padding-top: rem(25);
+      }
+
+      nav {
+        > ul {
+          display: flex;
+
+          > li {
+            flex: 1 0 auto;
+
+            > a {
+              font-size: rem(16);
+              font-weight: $font-weight-bold;
+              text-transform: uppercase;
+            }
+          }
+
+          ul {
+            margin-top: rem(20);
+
+            li {
+              margin-bottom: rem(20);
+            }
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        color: $clr-white;
+      }
+    }
+
+    &.management {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    color: $clr-white;
+    text-decoration: none;
+
+    &:hover {
+      color: $clr-green;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      color: $clr-green;
+
+      @include media-breakpoint-up(lg) {
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+}
