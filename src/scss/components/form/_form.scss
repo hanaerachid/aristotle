@@ -380,3 +380,14 @@ form {
     }
   }
 }
+
+.opigno-module-form {
+  .inIframe & {
+    padding: rem(6);
+  }
+
+  .description {
+    font-size: rem(12);
+    font-style: italic;
+  }
+}

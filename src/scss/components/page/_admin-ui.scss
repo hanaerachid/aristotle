@@ -347,22 +347,24 @@
     }
   }
 
-  .modules-wrapper {
-    .module-count {
-      font-weight: $font-weight-semibold;
-    }
-  }
-
+  .entity-wrapper,
+  .modules-wrapper,
   .activities-wrapper {
     .step-title {
       padding-left: rem(20);
     }
 
+
+    .entity-count,
+    .module-count,
     .activity-count {
       font-weight: $font-weight-semibold;
     }
 
+    .entity-add,
+    .module-add,
     .activity-add {
+      left: auto !important;
       padding: rem(20) rem(20) rem(20) 0;
       width: rem(390);
     }
@@ -505,7 +507,12 @@
 }
 
 .section-admin,
-.login-container {
+.login-container,
+.opigno-module-form {
+  .vertical-tabs__panes {
+    padding: rem(20);
+  }
+
   .form-managed-file {
     display: flex;
     position: relative;
