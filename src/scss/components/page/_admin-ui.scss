@@ -364,9 +364,13 @@
     .entity-add,
     .module-add,
     .activity-add {
-      left: auto !important;
       padding: rem(20) rem(20) rem(20) 0;
       width: rem(390);
+    }
+
+    .entity-add,
+    .module-add {
+      left: auto !important;
     }
 
     .handle {
