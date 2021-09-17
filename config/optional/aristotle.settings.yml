@@ -23,4 +23,4 @@ aristotle_header_image_upload: {  }
 mobile_app_premium_logo: 0
 aristotle_css_override_content: ''
 aristotle_css_override_fid: null
-logo_path2: themes/aristotle/assets/Logo-Opigno-3-dark.svg
+logo_path2: themes/contrib/aristotle/assets/Logo-Opigno-3-dark.svg
