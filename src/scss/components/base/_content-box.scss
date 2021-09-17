@@ -70,13 +70,6 @@
   display: flex;
   flex-direction: column;
 
-  &:hover {
-    .profile-info__name {
-      transform: scale(1.07);
-      text-decoration: underline;
-    }
-  }
-
   .edit-link {
     margin-left: auto;
   }
@@ -111,7 +104,10 @@
 
   &__name {
     margin-bottom: rem(10);
-    transition: transform .3s ease-out;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__type {

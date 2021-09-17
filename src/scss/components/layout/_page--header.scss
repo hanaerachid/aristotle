@@ -4,10 +4,12 @@
   position: relative;
 
   @include media-breakpoint-down(md) {
+    min-height: 0;
     padding: rem(32) 0 rem(10);
     position: absolute;
     left: 0;
     top: 0;
+    transition: min-height .3s ease;
     width: 100%;
     z-index: 10;
   }

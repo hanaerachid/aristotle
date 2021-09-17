@@ -29,7 +29,7 @@
   <span class="body">
     <span class="username">{{ content.thread_title }}</span>
     <span class="created">{{ content.thread_formatted_date }}</span>
-    <span class="field-pm-subject">{{ content.thread_text }}</span>
+    <span class="field-pm-subject">{{ content.thread_text|render|striptags }}</span>
     {% if content.thread_unread_count|first != 0 %}
       <span class="unread-count">{{ content.thread_unread_count }}</span>
     {% endif %}

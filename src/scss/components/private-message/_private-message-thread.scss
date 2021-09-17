@@ -134,7 +134,7 @@
       word-break: break-word;
 
       a {
-        color: $clr-navy;
+        text-decoration: none;
       }
     }
 
@@ -145,6 +145,11 @@
 
     p {
       margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
     }
   }
 

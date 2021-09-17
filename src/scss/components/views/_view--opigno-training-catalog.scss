@@ -179,6 +179,10 @@
   .views-field-field-learning-path-media-image {
     border-radius: rem(10);
     overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
 
   .body-wrapper {

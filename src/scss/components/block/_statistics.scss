@@ -204,6 +204,24 @@
       .ajax-progress {
         display: none;
       }
+
+      .form-item-month {
+        .bootstrap-select {
+          > .dropdown-toggle {
+            min-width: rem(145);
+
+            &:after {
+              content: '\f10f' !important;
+            }
+          }
+
+          > .dropdown-menu {
+            border: 1px solid $clr-green;
+            border-top: none;
+            transform: translateY(33px) !important;
+          }
+        }
+      }
     }
 
     .bootstrap-select {

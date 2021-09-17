@@ -489,19 +489,19 @@
     font-size: rem(22);
     padding-right: rem(20);
   }
+}
 
-  .ui-dialog-titlebar-close {
-    background: none;
-    border: none;
-    color: $clr-navy;
-    font-size: rem(20);
-    padding: 0;
-    position: absolute;
-    top: rem(32);
-    right: rem(20);
+.ui-dialog-titlebar-close {
+  background: none;
+  border: none;
+  color: $clr-navy;
+  font-size: rem(20);
+  padding: 0;
+  position: absolute;
+  top: rem(32);
+  right: rem(20);
 
-    &:after {
-      content: '\002715';
-    }
+  &:after {
+    content: '\002715';
   }
 }

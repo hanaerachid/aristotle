@@ -7,8 +7,8 @@
     <div class="left-col">
       {{ page.content }}
 
-      {% if opgino_demo %}
-        {{ opgino_demo.demo_users }}
+      {% if opigno_demo %}
+        {{ opigno_demo.demo_users }}
       {% endif %}
     </div>
 
@@ -16,9 +16,9 @@
       <div id="user-sidebar">
         {{ page.menu }}
 
+        {% block content %}
         <div class="form-wrapper user-login" data-target="{{ path('user.login') }}"
           {% if route_name == 'user.pass' or route_name == 'user.register' %}style="display: none;"{% endif %}>
-
           <h1>{{ 'SIGN IN TO OPIGNO'|t }}</h1>
           {{ login_form }}
 
@@ -26,7 +26,7 @@
             {{ page.status_messages }}
           </div>
 
-          {% if opgino_demo != TRUE %}
+          {% if opigno_demo != TRUE %}
             <div class="switch-link switch-link-bottom text-center">
               {% if register != 'admin_only' %}
                 <div><a href="{{ path('user.register') }}">{{ 'Create new account'|t }}</a></div>
@@ -75,6 +75,7 @@
             <div><a href="{{ path('user.login') }}">{{ 'Login'|t }}</a></div>
           </div>
         </div>
+        {% endblock %}
 
         <div id="footer">
           {{ page.footer }}

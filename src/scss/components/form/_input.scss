@@ -109,7 +109,16 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .form-textarea {
+  background: $clr-gray-light;
+  border: 1px solid $clr-gray-light-D5;
+  border-radius: rem(10);
+  outline: none;
+  padding: rem(10) rem(20);
   resize: none;
+
+  &:focus {
+    border-color: $clr-green;
+  }
 }
 
 ::-webkit-input-placeholder {

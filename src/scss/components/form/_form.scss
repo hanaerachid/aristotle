@@ -4,6 +4,13 @@ form {
     display: inline-block;
     margin-bottom: rem(10);
   }
+
+  .form-required {
+    &:after {
+      content: '*';
+      margin-left: 2px;
+    }
+  }
 }
 
 .entity-browser-media-entity-browser-groups-form.entity-browser-form {
@@ -381,13 +388,10 @@ form {
   }
 }
 
-.opigno-module-form {
-  .inIframe & {
-    padding: rem(6);
-  }
-
-  .description {
-    font-size: rem(12);
-    font-style: italic;
+.opignomodule-settings {
+  > .form-item {
+    &:first-child {
+      margin-top: rem(20);
+    }
   }
 }

@@ -300,11 +300,6 @@ function aristotle_preprocess_page(&$variables) {
   $register = $account_settings->get('register');
   $variables['register'] = $register;
 
-  // Check if demo module enabled.
-  if ($moduleHandler->moduleExists('opigno_demo') && $route == 'view.frontpage.page_1') {
-    $variables['opgino_demo'] = opigno_demo_form_user_login_rendarable();
-  }
-
   /* About opigno version */
   if (function_exists('opigno_lms_check_opigno_lms_updates') && function_exists('update_get_available')) {
     $variables['opigno_lms_updates'] = opigno_lms_check_opigno_lms_updates() ? 'nok' : 'ok';
@@ -326,9 +321,7 @@ function aristotle_preprocess_page(&$variables) {
     }
     else {
       $form = Drupal::formBuilder()->getForm(UserLoginForm::class);
-      $render = Drupal::service('renderer');
-
-      $variables['login_form'] = $render->renderPlain($form);
+      $variables['login_form'] = $form;
     }
   }
 
@@ -340,9 +333,7 @@ function aristotle_preprocess_page(&$variables) {
     }
     else {
       $form = Drupal::formBuilder()->getForm(UserPasswordForm::class);
-      $render = Drupal::service('renderer');
-
-      $variables['password_form'] = $render->renderPlain($form);
+      $variables['password_form'] = $form;
     }
   }
 
@@ -371,10 +362,9 @@ function aristotle_preprocess_page(&$variables) {
   $variables['search_form'] = NULL;
   if ($moduleHandler->moduleExists('search')) {
     $form = Drupal::formBuilder()->getForm(SearchBlockForm::class);
-    $render = Drupal::service('renderer');
     $form['keys']['#attributes']['placeholder'] = $form['keys']['#title'];
     $form['keys']['#title_display'] = 'invisible';
-    $variables['search_form'] = $render->renderPlain($form);
+    $variables['search_form'] = $form;
   }
 
   /* Frontpage slider */
@@ -419,6 +409,12 @@ function aristotle_preprocess_page(&$variables) {
 function aristotle_preprocess_block(&$variables) {
   if($variables["base_plugin_id"] == 'system_menu_block') {
     unset($variables["configuration"]["label_display"]);
+  }
+  if ('system_branding_block' == $variables["elements"]["#plugin_id"] &&
+    \Drupal::currentUser()->isAnonymous() &&
+    isset($variables["content"]["site_logo"])
+  ) {
+    $variables["site_logo"] = "/" . theme_get_setting('logo_path2');
   }
 }
 
@@ -747,6 +743,7 @@ function aristotle_preprocess_views_view_table(&$variables) {
   if ($view instanceof ViewExecutable) {
     $class = $view->id() . '-' . $view->current_display;
     $variables['attributes']['class'][] = str_replace('_', '-', $class);
+    $variables['#attached']['library'][] = 'opigno_statistics/admin_ui';
   }
 }
 
@@ -791,6 +788,7 @@ function aristotle_form_user_register_form_alter(&$form, FormStateInterface $for
 function aristotle_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form['account']['name']['#attributes']['placeholder'] = $form['account']['name']['#title'] ?? t('Username');
   $form['account']['mail']['#attributes']['placeholder'] = $form['account']['mail']['#title'] ?? t('Email address');
+  $form['account']['pass']['#process'][] = 'user_form_process_password_confirm';
   $form['account']['pass']['#process'][] = 'aristotle_user_form_process_pass';
 }
 
@@ -814,4 +812,17 @@ function aristotle_user_form_process_pass(array &$element, FormStateInterface $f
   $element['pass2']['#placeholder'] = t('Confirm password');
 
   return $element;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function aristotle_preprocess_links__dropbutton(&$variables) {
+  if (!$variables['links']) {
+    return;
+  }
+
+  foreach ($variables['links'] as &$link) {
+    $link['link']['#options']['attributes']['class'] = ['dropdown-item-text'];
+  }
 }

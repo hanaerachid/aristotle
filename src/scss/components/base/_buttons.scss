@@ -67,7 +67,8 @@
   padding: rem(10) rem(15);
 }
 
-.btn-border-red {
+.btn-border-red,
+.remove-button {
   background: none !important;
   border-color: $clr-red !important;
 
@@ -329,6 +330,17 @@
   }
 }
 
+.image-button {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  min-width: rem(25) !important;
+  transform: none !important;
+}
+
 .edit-link {
   a {
     color: $clr-navy;
@@ -340,8 +352,12 @@
 
 .back-btn {
   position: absolute;
-  left: 0;
+  left: 4px;
   top: 20px;
+
+  .page-opigno-module-group-answer-form & {
+    display: block !important;
+  }
 
   a {
     align-items: center;
@@ -350,13 +366,17 @@
     text-decoration: none;
   }
 
-  .fi {
+  .fi-rr-arrow-left {
     font-size: rem(35);
     margin: rem(2) rem(4) 0 0;
 
     &:before {
       line-height: rem(18);
     }
+  }
+
+  .fi-rr-angle-small-left {
+    font-size: rem(20);
   }
 }
 
@@ -606,12 +626,11 @@ fieldset:disabled a.btn {
   }
 }
 
-.create-activity-btn {
+.create-btn {
   align-items: center;
   background: $clr-gray-light;
-  border-radius: 0 rem(10) rem(10) 0;
+  border-radius: rem(10);
   border: none;
-  border-left: 2px solid $clr-green;
   color: $clr-navy;
   display: flex;
   font-weight: $font-weight-semibold;
@@ -627,5 +646,11 @@ fieldset:disabled a.btn {
   .fi {
     font-size: rem(20);
     margin-right: rem(10);
+  }
+}
+
+.ckeditor-button {
+  a {
+    box-sizing: content-box;
   }
 }

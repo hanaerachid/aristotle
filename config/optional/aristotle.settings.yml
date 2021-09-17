@@ -8,7 +8,7 @@ aristotle_home_page_settings:
 aristotle_menu_source: main
 aristotle_menu_show_for_anonymous: 1
 logo:
-  path: themes/aristotle/dist/images/content/Logo-Opigno-3-dark.svg
+  path: themes/aristotle/assets/Logo-Opigno-white.svg
   use_default: 0
 features:
   node_user_picture: 0
@@ -23,3 +23,4 @@ aristotle_header_image_upload: {  }
 mobile_app_premium_logo: 0
 aristotle_css_override_content: ''
 aristotle_css_override_fid: null
+logo_path2: themes/aristotle/assets/Logo-Opigno-3-dark.svg

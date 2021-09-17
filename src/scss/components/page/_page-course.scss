@@ -22,15 +22,13 @@
     min-width: 0;
     padding-right: rem(15);
     width: 100%;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 
   .label {
+    overflow: hidden;
+    padding-right: rem(20);
     text-align: left;
-    white-space: normal;
+    text-overflow: ellipsis;
   }
 
   .fi {
@@ -54,10 +52,6 @@
       padding-right: rem(15);
       transform: none;
       width: 100%;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 

@@ -31,6 +31,12 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
   }
   $form_state->setBuildInfo($build_info);
 
+  $form['logo']['logo_path2'] = [
+    '#type' => 'textfield',
+    '#title' => t('Path to custom logo'),
+    '#default_value' => theme_get_setting('logo_path2'),
+  ];
+
   // Aristotle header settings.
   $form['aristotle_header_settings'] = [
     '#type' => 'details',

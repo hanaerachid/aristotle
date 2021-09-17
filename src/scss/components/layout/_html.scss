@@ -13,7 +13,7 @@ body {
     flex: 1 1 auto;
 
     @include media-breakpoint-down(md) {
-      padding-top: 80px;
+      padding-top: rem(40);
     }
 
     > .container {
@@ -78,7 +78,7 @@ body {
   overflow: hidden;
 
   .page-header {
-    max-height: 100vh;
+    min-height: 100vh;
   }
 }
 
