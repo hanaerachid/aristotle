@@ -64,6 +64,17 @@ $theme-colors: (
   warning: $clr-theme-warning,
 );
 
+// Desktop colors from color.module config
+$clr-desktop-header-bg: #2f3759;
+$clr-desktop-header-link: #fffffe;
+$clr-desktop-header-link-active: #4ad3b1;
+$clr-desktop-headings: #2f3757;
+$clr-desktop-text: #2f3756;
+$clr-desktop-link: #4ad3b2;
+$clr-desktop-link-hover: #2f3755;
+$clr-desktop-button-color: #4ad3b3;
+$clr-desktop-button-text-color: #2f3754;
+
 // 2. Typography
 $rem-base: 16;
 
@@ -285,8 +296,8 @@ $dropdown-min-width: 180;
 $dropdown-font-size: $font-size-sm;
 $dropdown-color: $clr-content-text;
 $dropdown-bg: $clr-white;
-$dropdown-divider-bg: $clr-navy;
-$dropdown-link-color: $clr-navy;
+$dropdown-divider-bg: $clr-desktop-text;
+$dropdown-link-color: $clr-desktop-text;
 $dropdown-link-hover-color: $clr-header-link-active;
 $dropdown-link-active-color: $clr-header-link-active;
 $dropdown-header-color: $gray-200;

@@ -384,7 +384,7 @@
     }
 
     &.active {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
 
     &:not(:last-of-type) {
@@ -532,28 +532,28 @@
 
   .active {
     a {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 
   a {
     background: $clr-gray-light;
     border-radius: rem(10);
-    color: $clr-navy;
+    color: $clr-desktop-text;
     display: block;
     padding: rem(15) rem(10);
     text-decoration: none;
     transition: .3s ease;
 
     &:hover {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 }
 
 .lp_step_explanation {
   background: none;
-  color: $clr-navy;
+  color: $clr-desktop-text;
   margin-top: 0;
   padding-left: rem(78);
   position: relative;
@@ -607,7 +607,7 @@
   .class_show_text,
   .class_hide_text {
     align-items: center;
-    color: $clr-navy;
+    color: $clr-desktop-text;
     display: flex;
     font-weight: $font-weight-semibold;
     font-style: normal;

@@ -16,6 +16,13 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    .label {
+      > label:empty {
+        display: none;
+      }
+    }
+
     // scss-lint:disable QualifyingElement
     input[type="checkbox"],
     input[type="radio"] {
@@ -23,7 +30,8 @@
 
       &:checked {
         ~ label.option {
-          background-color: $clr-green;
+          background-color: $clr-desktop-button-color;
+          color: $clr-desktop-button-text-color;
 
           &:before {
             opacity: 1;
@@ -95,28 +103,6 @@
     }
   }
 
-  .form-search,
-  .form-submit {
-    background-color: $clr-gray-light;
-    border: 1px solid $clr-gray-light-D5;
-    box-shadow: none;
-    transform: none;
-  }
-
-  .form-submit:not(.opigno-create-shared-post) {
-    background: $clr-gray-light url(../images/design/search-gray.svg) center/18px no-repeat;
-    border-radius: 50%;
-    height: rem(33);
-    min-width: rem(33);
-    text-indent: -9999px;
-    width: rem(33);
-
-    &:hover {
-      background-image: url(../images/design/search-navy.svg);
-      border-color: $clr-green;
-    }
-  }
-
   .form-actions {
     display: flex;
 
@@ -124,19 +110,6 @@
       max-width: calc(50% - 5px);
       min-width: 0;
       width: 100%;
-    }
-
-    .form-submit {
-      background: $clr-green;
-      box-shadow: none;
-      text-indent: 0;
-      height: auto;
-      width: 100%;
-
-      &:hover {
-        background-image: none;
-        box-shadow: 0 3px 3px rgba($clr-black, .3);
-      }
     }
   }
 

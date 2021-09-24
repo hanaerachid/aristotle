@@ -5,7 +5,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-green;
+        border-color: $clr-desktop-link;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
 
@@ -17,9 +17,9 @@
 
     > .dropdown-toggle {
       background: $clr-white;
-      border: 1px solid $clr-green;
+      border: 1px solid $clr-desktop-link;
       border-radius: rem(10);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
       min-height: 0;
       min-width: rem(218);
@@ -42,7 +42,7 @@
     }
 
     > .dropdown-menu {
-      border: 1px solid $clr-green;
+      border: 1px solid $clr-desktop-link;
       border-top: none;
       border-radius: 0 0 rem(10) rem(10);
       box-shadow: none;
@@ -56,19 +56,19 @@
         text-align: left;
 
         &:hover {
-          color: $clr-navy;
+          color: $clr-desktop-text;
         }
 
         &:active {
           background: none;
-          color: $clr-navy;
+          color: $clr-desktop-text;
         }
       }
     }
 
     .active {
       background: none;
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
   }

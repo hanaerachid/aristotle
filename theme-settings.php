@@ -5,7 +5,10 @@
  * Aristotle theme settings.
  */
 
+use Drupal\aristotle\ThemeSettingsPreRender;
+use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\file\Entity\File;
 
 /**
@@ -18,7 +21,7 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
   if (isset($form_id)) {
     return;
   }
-
+  $form['#pre_render'][] = [ThemeSettingsPreRender::class,"preRender"];
   // Load file before running process (prevent not found on ajax,
   // validate and submit handlers).
   $build_info = $form_state->getBuildInfo();
@@ -31,10 +34,28 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
   }
   $form_state->setBuildInfo($build_info);
 
-  $form['logo']['logo_path2'] = [
+  $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+  $logo_path = $theme_path . '/assets/';
+
+  $form['logo']['logo_path_anonymous'] = [
     '#type' => 'textfield',
     '#title' => t('Path to custom logo'),
-    '#default_value' => theme_get_setting('logo_path2'),
+    '#default_value' => theme_get_setting('logo_path_anonymous'),
+    '#description' => t('Examples: <code>@implicit-public-file</code>,<code>@implicit-public-file</code> or <code>@implicit-file</code>.', [
+      '@implicit-public-file' => $logo_path . 'Logo-Opigno-3-dark.svg',
+      '@implicit-file' => 'Logo-Opigno-3-dark.svg',
+      '@implicit-schema-file' => 'public://Logo-Opigno-3-dark.svg',
+    ]),
+  ];
+
+  $form['logo']['logo_anonymous_upload'] = [
+    '#type' => 'file',
+    '#title' => t('Upload logo image'),
+    '#upload_location' => 'public://',
+    '#upload_validators' => [
+      'file_validate_extensions' => ['gif png jpg jpeg svg'],
+    ],
+    '#description' => t("If you don't have direct file access to the server, use this field to upload your logo."),
   ];
 
   // Aristotle header settings.
@@ -261,6 +282,14 @@ function aristotle_form_system_theme_settings_alter_validate($form, &$form_state
 
   $storage = $form_state->getStorage();
   $new_storage = [];
+  // Check for a new uploaded logo.
+  if (isset($form['logo'])) {
+    $file = _file_save_upload_from_form($form['logo']['logo_anonymous_upload'], $form_state, 0);
+    if ($file) {
+      // Put the temporary file in form_values so we can save it on submit.
+      $form_state->setValue('logo_anonymous_upload', $file);
+    }
+  }
 
   $fid = $form_state->getValue('aristotle_header_image_upload');
   if (!empty($fid) && $fid[0]) {
@@ -312,8 +341,24 @@ function aristotle_form_system_theme_settings_alter_validate($form, &$form_state
 /**
  * Submission callback for aristotle_form_system_theme_settings_alter().
  */
-function aristotle_form_system_theme_settings_alter_submit($form, &$form_state) {
+function aristotle_form_system_theme_settings_alter_submit($form, FormStateInterface &$form_state) {
   $storage = $form_state->getStorage();
+
+  $values = $form_state->getValues();
+  // If the user uploaded a new logo or favicon, save it to a permanent location
+  // and use it in place of the default theme-provided file.
+  $default_scheme = \Drupal::config('system.file')->get('default_scheme');
+  try {
+    if (!empty($values['logo_anonymous_upload'])) {
+      $filename = \Drupal::service('file_system')->copy($values['logo_anonymous_upload']->getFileUri(), $default_scheme . '://');
+      $form_state->setValue('logo_path_anonymous', $filename);
+    }
+  }
+  catch (FileException $e) {
+    // Ignore.
+  }
+  $form_state->unsetValue('logo_anonymous_upload');
+
 
   if (isset($storage['aristotle_header_image_path']) && $storage['aristotle_header_image_path']) {
     $file = $storage['aristotle_header_image_path'];

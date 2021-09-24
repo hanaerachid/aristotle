@@ -19,10 +19,4 @@
     border-radius: rem(10);
     border-color: $clr-gray-light-D5;
   }
-
-  .form-submit,
-  #edit-cancel {
-    @extend .btn;
-    @extend .btn-rounded;
-  }
 }

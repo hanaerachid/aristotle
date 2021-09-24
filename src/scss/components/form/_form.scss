@@ -31,13 +31,6 @@ form {
       border-radius: rem(10);
       padding: rem(10) rem(20);
     }
-
-    > .form-submit {
-      background-image: none !important;
-      margin-bottom: 0;
-      text-indent: 0;
-      width: auto !important;
-    }
   }
 
   .content-box {
@@ -179,7 +172,7 @@ form {
     background: $clr-gray-light;
     border: 1px solid $clr-gray-light-D5;
     border-radius: rem(10);
-    color: $clr-navy;
+    color: $clr-desktop-text;
     outline: none;
     padding: rem(10) rem(20);
     width: 100%;
@@ -190,7 +183,7 @@ form {
     }
 
     &:focus {
-      border-color: $clr-green;
+      border-color: $clr-desktop-link;
     }
   }
 
@@ -214,7 +207,7 @@ form {
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-green;
+        border-color: $clr-desktop-link;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -222,7 +215,7 @@ form {
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-green;
+          border-bottom: 1px solid $clr-desktop-link;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -236,7 +229,7 @@ form {
       z-index: 600;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-green;
+        border: 1px solid $clr-desktop-link;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -247,7 +240,7 @@ form {
     }
 
     .dropdown-header {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
   }
@@ -276,7 +269,7 @@ form {
       position: relative;
 
       &:before {
-        border: 1px solid $clr-navy;
+        border: 1px solid $clr-desktop-text;
         content: '';
         height: rem(16);
         position: absolute;

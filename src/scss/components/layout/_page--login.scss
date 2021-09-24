@@ -151,9 +151,9 @@
 
     &__link {
       align-items: center;
-      background: $clr-navy;
+      background: $clr-desktop-header-bg;
       border-radius: 50%;
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       display: flex;
       justify-content: center;
       height: rem(65);
@@ -167,7 +167,7 @@
       }
 
       &:hover {
-        color: $clr-white;
+        color: $clr-desktop-header-link;
       }
 
       span {
@@ -177,7 +177,7 @@
 
     .catalogue {
       @extend .fi-rr-book-alt;
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       font-size: rem(38);
 
       @include media-breakpoint-down(sm) {
@@ -200,7 +200,7 @@
 
     .home {
       @extend .fi-rr-home;
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       font-size: rem(38);
 
       @include media-breakpoint-down(sm) {
@@ -249,14 +249,14 @@
     background: $clr-gray-light;
     border: 1px solid $clr-gray-light-D5;
     border-radius: rem(10);
-    color: $clr-navy;
+    color: $clr-desktop-text;
     outline: none;
     padding: rem(10) rem(20);
     width: 100%;
 
     &:hover,
     &:focus {
-      border-color: $clr-green;
+      border-color: $clr-desktop-link;
     }
   }
 

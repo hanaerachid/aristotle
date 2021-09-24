@@ -461,7 +461,7 @@
 
       .views-field-label {
         h2 {
-          color: $clr-navy;
+          color: $clr-desktop-headings;
           margin-bottom: rem(15);
         }
 
@@ -619,27 +619,6 @@
       .form-submit {
         margin: 0 auto;
         max-width: rem(156);
-      }
-    }
-
-    .form-actions {
-      .form-submit {
-        border: 2px solid $clr-green;
-        border-radius: rem(25);
-
-        @include media-breakpoint-down(xs) {
-          min-width: 45%;
-          width: auto;
-        }
-      }
-
-      .btn-reset-filter {
-        background: $clr-white;
-        display: block;
-
-        &:hover {
-          background: $clr-green;
-        }
       }
     }
   }

@@ -3,13 +3,6 @@ form:not(.views-exposed-form):not(.group-content-form):not(.tft-add-term-form) {
     &:not(.fieldgroup) {
       margin-bottom: rem(14);
     }
-
-    &:not(.js-form-type-select):focus-within {
-      ~ .form-submit {
-        background-image: url(../images/design/search-navy.svg);
-        border-color: $clr-green;
-      }
-    }
   }
 }
 

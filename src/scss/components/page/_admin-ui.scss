@@ -196,7 +196,7 @@
     background: $clr-gray-light;
     border: 1px solid $clr-gray-light-D5;
     border-radius: rem(10);
-    color: $clr-navy;
+    color: $clr-desktop-text;
     outline: none;
     padding: rem(10) rem(20);
     width: 100%;
@@ -207,7 +207,7 @@
     }
 
     &:focus {
-      border-color: $clr-green;
+      border-color: $clr-desktop-link;
     }
   }
 
@@ -231,7 +231,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-green;
+        border-color: $clr-desktop-link;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -239,7 +239,7 @@
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-green;
+          border-bottom: 1px solid $clr-desktop-link;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -253,7 +253,7 @@
       z-index: 600;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-green;
+        border: 1px solid $clr-desktop-link;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -264,7 +264,7 @@
     }
 
     .dropdown-header {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
   }
@@ -294,9 +294,9 @@
     }
 
     .button-action {
-      border: 2px solid $clr-green;
+      border: 2px solid $clr-desktop-button-color;
       border-radius: rem(25);
-      color: $clr-navy;
+      color: $clr-desktop-button-text-color;
       display: inline-flex;
       font-weight: $font-weight-semibold;
       justify-content: center;
@@ -308,34 +308,12 @@
       width: auto;
 
       &:hover {
-        background: $clr-green;
+        background: $clr-desktop-button-color;
+        box-shadow: 0 3px 6px rgba($clr-black, .3);
+        text-decoration: none;
+        transform: translateY(-3px);
       }
     }
-  }
-
-  #edit-submit-user-admin-people {
-    background: $clr-green;
-    border: 2px solid $clr-green;
-    border-radius: rem(25);
-    color: $clr-navy;
-    font-weight: $font-weight-semibold;
-    height: auto;
-    min-width: rem(117);
-    padding: rem(10) rem(15);
-    text-indent: 0;
-    width: auto;
-
-    &:hover {
-      background: $clr-green-dark;
-      border-color: $clr-green-dark;
-    }
-  }
-
-  #edit-unpublish,
-  #edit-delete {
-    @extend .btn;
-    @extend .btn-rounded;
-    @extend .btn-border-red;
   }
 
   .btn {
@@ -483,7 +461,7 @@
 
     .form-checkbox {
       appearance: none;
-      border: 1px solid $clr-navy;
+      border: 1px solid $clr-desktop-text;
       border-radius: 2px;
       clip: auto;
       cursor: pointer;
@@ -514,6 +492,13 @@
       }
     }
   }
+
+  .color-preview {
+    box-shadow: 0 3px 6px rgba($clr-black, .3);
+    border-radius: rem(10);
+    margin-bottom: rem(20);
+    padding: rem(20);
+  }
 }
 
 .section-admin,
@@ -530,23 +515,6 @@
 
     img {
       max-width: rem(166);
-    }
-
-    .form-submit {
-      background: $clr-white !important;
-
-      &:hover {
-        background: $clr-green !important;
-      }
-
-      &[id*='remove'] {
-        border-color: $clr-red !important;
-
-        &:hover {
-          background: $clr-red !important;
-          color: $clr-white !important;
-        }
-      }
     }
 
     .ajax-progress {
@@ -829,7 +797,7 @@
     background: $clr-gray-light;
     border: 1px solid $clr-gray-light-D5;
     border-radius: rem(10);
-    color: $clr-navy;
+    color: $clr-desktop-text;
     outline: none;
     padding: rem(10) rem(20);
     width: 100%;
@@ -840,7 +808,7 @@
     }
 
     &:focus {
-      border-color: $clr-green;
+      border-color: $clr-desktop-link;
     }
   }
 
@@ -864,7 +832,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-green;
+        border-color: $clr-desktop-link;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -872,7 +840,7 @@
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-green;
+          border-bottom: 1px solid $clr-desktop-link;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -886,7 +854,7 @@
       z-index: 600;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-green;
+        border: 1px solid $clr-desktop-link;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -897,7 +865,7 @@
     }
 
     .dropdown-header {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
   }
@@ -939,13 +907,13 @@
     }
 
     &__bar {
-      background-color: $clr-green;
+      background-color: $clr-desktop-link;
       border-radius: rem(8);
       transition: width .3s ease;
     }
 
     &__percentage {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
   }

@@ -4,7 +4,7 @@
   position: relative;
   align-items: center;
   display: inline-flex;
-  color: $clr-navy;
+  color: $clr-desktop-button-text-color;
   white-space: nowrap;
   user-select: none;
   box-shadow: none;
@@ -20,8 +20,8 @@
   &:focus,
   &.focus,
   &:hover {
-    background-color: $clr-green;
     box-shadow: 0 3px 6px rgba($clr-black, .3);
+    color: $clr-desktop-button-text-color;
     text-decoration: none;
     transform: translateY(-3px);
   }
@@ -58,7 +58,7 @@
 
 .btn-rounded {
   background-color: $clr-white;
-  border: 2px solid $clr-green;
+  border: 2px solid $clr-desktop-button-color;
   border-radius: rem(25);
   font-weight: $font-weight-semibold;
   justify-content: center;
@@ -79,7 +79,7 @@
 }
 
 .btn-bg {
-  background-color: $clr-green;
+  background-color: $clr-desktop-button-color;
 }
 
 .btn-big-text {
@@ -105,7 +105,7 @@
   background: $clr-gray-light;
   border: 1px solid $clr-gray-light-D5;
   border-radius: rem(10);
-  color: $clr-navy;
+  color: $clr-desktop-text;
   font-weight: $font-weight-semibold;
   transition: .3s ease;
 
@@ -150,8 +150,8 @@
     @extend .fi-rr-plus;
     align-items: center;
     border-radius: rem(30);
-    border: 2px solid $clr-green;
-    color: $clr-navy;
+    border: 2px solid $clr-desktop-link;
+    color: $clr-desktop-text;
     display: flex;
     flex-direction: row-reverse;
     font-size: rem(14);
@@ -163,7 +163,7 @@
     width: rem(36);
 
     &:hover {
-      background: $clr-green;
+      background: $clr-desktop-link;
       text-decoration: none;
       width: rem(90);
 
@@ -173,7 +173,7 @@
     }
 
     &:before {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-family: uicons-regular-rounded !important;
       font-size: rem(19);
       font-style: normal;
@@ -343,7 +343,7 @@
 
 .edit-link {
   a {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     display: block;
     font-size: rem(24);
     text-decoration: none;
@@ -361,7 +361,7 @@
 
   a {
     align-items: center;
-    color: $clr-navy;
+    color: $clr-desktop-headings;
     display: flex;
     text-decoration: none;
   }
@@ -496,10 +496,10 @@ fieldset:disabled a.btn {
   .mat-button-toggle {
     align-items: center;
     background: $clr-white;
-    border: 2px solid $clr-green;
+    border: 2px solid $clr-desktop-link;
     border-radius: rem(25);
     box-shadow: none;
-    color: $clr-navy;
+    color: $clr-desktop-text;
     font-family: $font-family-base;
     font-weight: $font-weight-semibold;
     justify-content: center;
@@ -516,7 +516,7 @@ fieldset:disabled a.btn {
     }
 
     &.activate {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
 
     &:hover {
@@ -549,7 +549,7 @@ fieldset:disabled a.btn {
 
   .mat-button {
     background: $clr-white;
-    border: 2px solid $clr-green;
+    border: 2px solid $clr-desktop-link;
     border-radius: rem(25);
     font-family: $font-family-base;
     font-weight: $font-weight-semibold;
@@ -559,7 +559,7 @@ fieldset:disabled a.btn {
     transition: .3s ease;
 
     &:hover {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 
@@ -572,10 +572,10 @@ fieldset:disabled a.btn {
     &.mat-basic,
     &.mat-primary {
       background: none;
-      border: 2px solid $clr-green;
+      border: 2px solid $clr-desktop-link;
       box-shadow: none;
       border-radius: rem(25);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       min-width: rem(156);
       transition: .3s ease;
     }
@@ -585,7 +585,7 @@ fieldset:disabled a.btn {
       border: 2px solid $clr-red;
       box-shadow: none;
       border-radius: rem(25);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       transition: .3s ease;
 
       &:hover {
@@ -611,11 +611,11 @@ fieldset:disabled a.btn {
 
   .mat-radio-container {
     .mat-radio-outer-circle {
-      border-color: $clr-green !important;
+      border-color: $clr-desktop-link !important;
     }
 
     .mat-radio-inner-circle {
-      background-color: $clr-green;
+      background-color: $clr-desktop-link;
     }
 
     .mat-radio-ripple {
@@ -631,7 +631,7 @@ fieldset:disabled a.btn {
   background: $clr-gray-light;
   border-radius: rem(10);
   border: none;
-  color: $clr-navy;
+  color: $clr-desktop-text;
   display: flex;
   font-weight: $font-weight-semibold;
   flex: 1 0 auto;
@@ -640,7 +640,7 @@ fieldset:disabled a.btn {
   width: 100%;
 
   &:hover {
-    background: $clr-green;
+    background: $clr-desktop-link;
   }
 
   .fi {

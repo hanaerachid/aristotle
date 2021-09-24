@@ -31,10 +31,10 @@
     .dropdown-menu {
       animation-name: fadeIn;
       animation-duration: 0.3s;
-      background: $clr-navy;
+      background: $clr-desktop-header-bg;
       border-radius: 0;
       box-shadow: none;
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       padding: rem(33) 0 rem(24);
       position: relative;
       left: 0 !important;
@@ -48,7 +48,7 @@
         padding-right: rem(50);
 
         h2 {
-          color: $clr-white;
+          color: $clr-desktop-header-link;
         }
       }
 
@@ -69,6 +69,12 @@
               font-weight: $font-weight-bold;
               text-transform: uppercase;
             }
+
+            > [href=""] {
+              cursor: default;
+              pointer-events: none;
+              text-decoration: none;
+            }
           }
 
           ul {
@@ -88,7 +94,7 @@
       }
 
       a {
-        color: $clr-white;
+        color: $clr-desktop-header-link;
       }
     }
 
@@ -100,16 +106,16 @@
   }
 
   &__link {
-    color: $clr-white;
+    color: $clr-desktop-header-link;
     text-decoration: none;
 
     &:hover {
-      color: $clr-green;
+      color: $clr-desktop-header-link-active;
       text-decoration: none;
     }
 
     &.is-active {
-      color: $clr-green;
+      color: $clr-desktop-header-link-active;
 
       @include media-breakpoint-up(lg) {
         font-weight: $font-weight-semibold;

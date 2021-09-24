@@ -160,6 +160,7 @@
     box-shadow: 0 0 6px rgba($clr-black, .3);
     display: flex;
     margin-bottom: rem(20);
+    min-height: rem(225);
     padding: rem(20);
     position: relative;
 
@@ -194,22 +195,6 @@
 
       .cke_contents {
         max-height: rem(110);
-      }
-    }
-
-    .form-submit {
-      background: $clr-gray-light url(../images/design/send-gray.svg) 5px 8px/24px no-repeat;
-      border: 1px solid $clr-gray-light-D5;
-      border-radius: 50%;
-      height: rem(39);
-      min-width: 0;
-      outline: none;
-      text-indent: -9999px;
-      width: rem(39);
-
-      &:hover {
-        background-image: url(../images/design/send-navy.svg);
-        border-color: $clr-green;
       }
     }
   }

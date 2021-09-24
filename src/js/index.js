@@ -187,7 +187,9 @@ import 'bootstrap-select'
     attach: function(context, settings) {
       const $messageThread = $('.private-message-thread-messages', context);
 
-      $messageThread.scrollTop($messageThread.prop('scrollHeight'));
+      if (context === document) {
+        $messageThread.scrollTop($messageThread.prop('scrollHeight'));
+      }
 
       $('.show-message-list', context).on('click', function(e) {
         e.preventDefault();

@@ -5,7 +5,7 @@ table {
   width: 100%;
 
   a[rel='nofollow'] {
-    color: $clr-navy;
+    color: $clr-desktop-text;
 
     &:hover {
       text-decoration: none;
@@ -14,7 +14,7 @@ table {
 }
 
 thead {
-  border-bottom: 1px solid $clr-navy;
+  border-bottom: 1px solid $clr-desktop-text;
 }
 
 th,
@@ -125,7 +125,7 @@ td {
 
   thead {
     th {
-      border-bottom: 1px solid $clr-navy;
+      border-bottom: 1px solid $clr-desktop-text;
     }
   }
 
@@ -177,7 +177,7 @@ td {
 
     table {
       background: $clr-gray-light;
-      border-left: rem(10) solid $clr-green;
+      border-left: rem(10) solid $clr-desktop-link;
       margin-bottom: 0;
     }
 
@@ -354,7 +354,7 @@ td {
   }
 
   .details-btn {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     text-decoration: none;
 
     &.active {
@@ -485,10 +485,10 @@ td {
 
   td {
     a:not(.btn) {
-      color: $clr-green;
+      color: $clr-desktop-link;
 
       &:hover {
-        color: $clr-navy;
+        color: $clr-desktop-text;
         text-decoration: underline;
       }
     }
@@ -569,7 +569,7 @@ td {
       align-items: center;
       background: $clr-gray-light;
       border-radius: rem(10);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-size: rem(24);
       display: flex;
       justify-content: center;
@@ -597,7 +597,7 @@ td {
   padding: rem(5) rem(20);
 
   table {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     margin-bottom: 0;
   }
 
@@ -622,7 +622,7 @@ table.drag-and-drop-wrapper {
 
     th,
     td {
-      color: $clr-navy;
+      color: $clr-desktop-text;
     }
 
     td {

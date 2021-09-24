@@ -22,7 +22,7 @@
       background: $clr-gray-light-D5;
       border: none;
       border-radius: 50%;
-      color: $clr-navy;
+      color: $clr-desktop-text;
       display: flex;
       font-weight: $font-weight-semibold;
       justify-content: center;
@@ -33,7 +33,7 @@
     }
 
     .active {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 

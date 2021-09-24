@@ -1,5 +1,5 @@
 .page-header {
-  background-color: $clr-navy;
+  background-color: $clr-desktop-header-bg;
   padding: rem(32) 0 rem(31);
   position: relative;
 
@@ -87,7 +87,7 @@
     &__link {
       align-items: center;
       display: flex;
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       text-decoration: none;
 
       @include media-breakpoint-down(xl) {
@@ -99,12 +99,12 @@
       }
 
       &:hover {
-        color: $clr-green;
+        color: $clr-desktop-header-link-active;
         text-decoration: none;
       }
 
       &.active {
-        color: $clr-green;
+        color: $clr-desktop-header-link-active;
         font-weight: $font-weight-semibold;
       }
     }
@@ -174,13 +174,13 @@
     }
 
     .fi {
-      color: $clr-white;
+      color: $clr-desktop-header-link;
       font-size: rem(24);
     }
 
     .fi-rr-angle-small-down {
       align-items: center;
-      border: 2px solid $clr-white;
+      border: 2px solid $clr-desktop-header-link;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -194,7 +194,7 @@
 
     .dropdown-toggle {
       &:hover {
-        color: $clr-white;
+        color: $clr-desktop-header-link;
       }
 
       &:after {
@@ -226,7 +226,7 @@
       }
 
       .all-read {
-        color: $clr-green;
+        color: $clr-desktop-link;
         display: inline-flex;
         margin-bottom: rem(10);
       }
@@ -266,7 +266,7 @@
     .notification-item {
       &:not(:last-child) {
         &:after {
-          background: $clr-navy;
+          background: $clr-desktop-text;
           content: '';
           display: block;
           height: 1px;
@@ -279,7 +279,7 @@
     .notification-item-text {
       background: $clr-gray-light;
       border-radius: rem(10);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       display: block;
       padding: rem(8);
     }
@@ -290,7 +290,7 @@
     }
 
     .marker {
-      background: $clr-green;
+      background: $clr-desktop-header-link-active;
       border-radius: 50%;
       height: rem(7);
       position: absolute;

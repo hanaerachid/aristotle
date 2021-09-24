@@ -5,12 +5,12 @@
     margin-bottom: rem(20);
 
     a {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
     }
 
     span {
-      color: $clr-green;
+      color: $clr-desktop-link;
     }
   }
 }
@@ -41,7 +41,7 @@
   .user-menu-item-text {
     align-items: center;
     display: flex;
-    color: $clr-navy;
+    color: $clr-desktop-text;
     font-weight: $font-weight-semibold;
 
     @include media-breakpoint-down(md) {

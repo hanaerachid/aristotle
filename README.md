@@ -255,6 +255,22 @@ Add vars for font in `/assets/scss/utils/vars.scss`:
 $mySecontFont : 'Helvetica-Base', Arial, sans-serif;
 ```
 
+## CSS overrides:
+Add custom CSS to ``CSS overrides field`` in Aristotle theme settings.
+
+If element has semitransparent background or color (e.g. checkbox and radio buttons) use this field
+and don't forget to use ``!important`` property.
+### Example:
+``` CSS
+js-form-type-checkbox label.option:before {
+    border-color: #2f3758 !important;
+}
+.js-form-type-checkbox input:not(:checked)~label.option:hover:before {
+    background: rgba(74, 211, 176, .8) !important;
+    box-shadow: 0 0 0 2px rgba(74, 211, 176, .8) !important;
+}
+```
+
 
 ## License
 [MIT](./LICENSE)

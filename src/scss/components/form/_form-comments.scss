@@ -66,30 +66,6 @@
     flex: 1 0 auto;
     margin-right: 20px;
     margin-bottom: 0 !important;
-
-    &:focus-within {
-      ~ .form-actions {
-        .form-submit {
-          background-image: url(../images/design/send-navy.svg);
-          border-color: $clr-green;
-        }
-      }
-    }
-  }
-
-  .form-submit {
-    background: $clr-gray-light url(../images/design/send-gray.svg) 5px 8px/24px no-repeat;
-    border: 1px solid $clr-gray-light-D5;
-    border-radius: 50%;
-    height: rem(39);
-    outline: none;
-    text-indent: -9999px;
-    width: rem(39);
-
-    &:hover {
-      background-image: url(../images/design/send-navy.svg);
-      border-color: $clr-green;
-    }
   }
 
   .ajax-progress {
@@ -108,7 +84,7 @@
   font-size: rem(14);
 
   &__item {
-    border: 1px solid $clr-green;
+    border: 1px solid $clr-desktop-link;
     border-radius: rem(20);
     cursor: pointer;
     margin-top: rem(13);
@@ -117,7 +93,7 @@
   }
 
   a {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     text-decoration: none;
   }
 
@@ -152,7 +128,7 @@
       z-index: 1;
 
       .fi {
-        background: $clr-green url(../images/design/pinned-icon.svg) center no-repeat;
+        background: $clr-desktop-link url(../images/design/pinned-icon.svg) center no-repeat;
         border-radius: 50%;
         margin-left: rem(10);
         height: rem(26);
@@ -169,7 +145,7 @@
     .dropdown-toggle {
       background: none;
       border: none;
-      color: $clr-navy;
+      color: $clr-desktop-text;
       cursor: pointer;
       font-size: rem(27);
       padding: 0;
@@ -223,7 +199,7 @@
   }
 
   &__date {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     font-size: rem(12);
     font-style: italic;
     text-decoration: none;
@@ -240,7 +216,7 @@
       text-decoration: none;
 
       &:hover {
-        color: $clr-green;
+        color: $clr-desktop-link;
         text-decoration: underline;
       }
 
@@ -251,7 +227,7 @@
     }
 
     .post {
-      border: 1px solid $clr-navy;
+      border: 1px solid $clr-desktop-text;
       border-radius: rem(20);
       margin: rem(20) 0;
       padding: rem(20);
@@ -307,19 +283,20 @@
     }
 
     .ajax-progress {
+      left: 50%;
       top: 0;
     }
   }
 
   &__number--like {
-    color: $clr-green;
+    color: $clr-desktop-link;
     cursor: pointer;
     font-size: rem($font-size-base);
     font-weight: $font-weight-bold;
     text-decoration: none;
 
     &:hover {
-      color: $clr-green;
+      color: $clr-desktop-link;
       text-decoration: none;
     }
 
@@ -353,7 +330,7 @@
   &__actions--comment {
     align-items: center;
     display: inline-flex;
-    color: $clr-navy;
+    color: $clr-desktop-text;
     cursor: pointer;
     text-decoration: none;
 
@@ -366,12 +343,12 @@
     margin-right: 12.5%;
 
     &.active {
-      color: $clr-green;
+      color: $clr-desktop-link;
     }
   }
 
   &__collapse-comments {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     cursor: pointer;
     position: absolute;
     right: rem(-8);
@@ -399,15 +376,6 @@
       margin-right: rem(20);
     }
 
-    .form-submit {
-      background: transparent url(../images/design/send-navy.svg) 5px 8px/24px no-repeat;
-      border: 1px solid $clr-green;
-
-      &:hover {
-        background-color: $clr-green;
-      }
-    }
-
     .ajax-progress {
       display: none;
     }
@@ -428,7 +396,7 @@
       .comment-item__actions--like {
         align-items: center;
         display: flex;
-        color: $clr-navy;
+        color: $clr-desktop-text;
         font-size: rem(12);
         font-weight: $font-weight-bold;
         margin-right: rem(12);
@@ -436,7 +404,7 @@
         text-decoration: none;
 
         &.active {
-          color: $clr-green;
+          color: $clr-desktop-link;
         }
 
         .fi {
@@ -446,7 +414,7 @@
       }
 
       a {
-        color: $clr-green;
+        color: $clr-desktop-text;
         text-decoration: none;
 
         &.link-bold {
@@ -519,7 +487,7 @@
     }
 
     .load-comments {
-      color: $clr-navy;
+      color: $clr-desktop-text;
     }
 
     .ajax-progress {
@@ -541,7 +509,7 @@
   width: rem(245);
 
   &:after {
-    background: $clr-navy;
+    background: $clr-desktop-text;
     content: '';
     display: flex;
     justify-content: center;
@@ -586,16 +554,6 @@
   .form-actions {
     display: flex;
     justify-content: flex-end;
-  }
-
-  .form-submit {
-    @extend .btn;
-    @extend .btn-rounded;
-    background: $clr-white url(../images/design/send-navy.svg) rem(35) center/24px no-repeat;
-    border: 2px solid $clr-green;
-    border-radius: rem(25);
-    padding-left: rem(40);
-    text-indent: 0;
   }
 
   #edit-preview {

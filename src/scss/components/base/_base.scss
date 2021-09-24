@@ -3,7 +3,7 @@
 }
 
 body {
-  color: $clr-navy;
+  color: $clr-desktop-text;
   font-family: $font-family-base;
   font-size: rem($font-size-base);
   line-height: 1.3;
@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $clr-navy;
+  color: $clr-desktop-headings;
   font-family: $font-family-header;
   font-weight: $font-weight-bold;
   line-height: 1.35;
@@ -53,13 +53,13 @@ h6 {
 }
 
 a {
-  color: $clr-green;
+  color: $clr-desktop-link;
   text-decoration: $link-decoration;
   transition: color .3s ease-out;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    color: $clr-navy;
+    color: $clr-desktop-link-hover;
     text-decoration: $link-hover-decoration;
   }
 }
@@ -95,4 +95,10 @@ img {
 .hidden,
 .js-hide {
   display: none !important;
+}
+
+.without-admin-toolbar {
+  #toolbar-administration {
+    display: none !important;
+  }
 }

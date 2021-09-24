@@ -79,7 +79,7 @@
         }
 
         &:after {
-          background: $clr-green;
+          background: $clr-desktop-link;
           content: '';
           height: 3px;
           position: absolute;
@@ -111,7 +111,7 @@
       }
 
       .date-box {
-        border-right: 1px solid $clr-navy;
+        border-right: 1px solid $clr-desktop-text;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -149,7 +149,7 @@
           width: rem(24);
 
           &:before {
-            color: $clr-navy;
+            color: $clr-desktop-text;
             font-family: uicons-regular-rounded !important;
             font-style: normal;
             font-weight: normal !important;
@@ -248,7 +248,7 @@
           text-decoration: none;
 
           &:before {
-            color: $clr-navy;
+            color: $clr-desktop-text;
             font-family: uicons-regular-rounded !important;
             font-style: normal;
             font-weight: normal !important;
@@ -328,7 +328,7 @@
 
     &.selected-date {
       .inner {
-        background: $clr-green;
+        background: $clr-desktop-link;
       }
     }
 
@@ -349,7 +349,7 @@
       width: 100%;
 
       &:after {
-        background: $clr-green;
+        background: $clr-desktop-link;
         border-radius: 50%;
         content: '';
         height: rem(7);

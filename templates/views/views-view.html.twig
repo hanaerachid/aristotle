@@ -44,9 +44,11 @@
 %}
 <div {{ attributes.addClass(classes) }}>
   {{ title_prefix }}
+  {% block title %}
   {% if view.title %}
     <h2 class="content-box__title">{{ view.title }}</h2>
   {% endif %}
+  {% endblock %}
   {{ title_suffix }}
 
   {% if header %}

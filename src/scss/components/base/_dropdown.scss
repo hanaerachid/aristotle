@@ -18,6 +18,7 @@
   }
 
   .fi {
+    color: $clr-desktop-text;
     font-size: rem(27);
   }
 }
@@ -175,6 +176,24 @@
 
   &:hover {
     text-decoration: none;
+  }
+}
+
+.views-admin {
+  .dropdown-menu {
+    padding: 4px 0;
+  }
+  
+  .dropdown-item-text {
+    &.icon.compact {
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      height: auto;
+      text-indent: 0;
+      width: auto;
+    }
   }
 }
 // scss-lint:enable all

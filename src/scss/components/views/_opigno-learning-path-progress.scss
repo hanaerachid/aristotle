@@ -9,13 +9,13 @@
   }
 
   .progress-progress {
-    background-color: $clr-green;
+    background-color: $clr-desktop-link;
     border-radius: inherit;
     height: 100%;
   }
 
   .progress-value {
-    color: $clr-navy;
+    color: $clr-desktop-text;
     font-size: rem(20);
     font-weight: $font-weight-extrabold;
     margin-bottom: rem(6);
@@ -121,14 +121,14 @@
      * L - (L * percent) / 100
      */
     &:nth-child(2) {
-      stroke: $clr-green;
+      stroke: $clr-desktop-link;
       transform: rotate(-90deg) translate(5px, 5px);
       transform-origin: center;
     }
   }
 
   text {
-    fill: $clr-navy;
+    fill: $clr-desktop-text;
     font-weight: $font-weight-bold;
   }
 }
@@ -143,6 +143,6 @@
   width: rem(15);
 
   &__completed {
-    background: $clr-green;
+    background: $clr-desktop-link;
   }
 }

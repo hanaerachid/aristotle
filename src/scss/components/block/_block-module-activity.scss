@@ -98,7 +98,7 @@ body.section-module {
     &:after {
       border: rem(5) solid transparent;
       border-bottom: 0;
-      border-top-color: $clr-navy;
+      border-top-color: $clr-desktop-text;
       content: '';
       position: absolute;
       right: 0;
@@ -124,7 +124,7 @@ body.section-module {
     width: rem(9);
 
     &.passed {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 
@@ -158,7 +158,7 @@ body.section-module {
     &.passed {
       + .passed {
         &:after {
-          background: $clr-green;
+          background: $clr-desktop-link;
           content: '';
           position: absolute;
           left: 0;
@@ -169,7 +169,7 @@ body.section-module {
       }
 
       &:before {
-        background: $clr-green;
+        background: $clr-desktop-link;
         border-radius: 4px;
         content: '';
         position: absolute;
@@ -181,7 +181,7 @@ body.section-module {
     }
 
     .fi {
-      color: $clr-green;
+      color: $clr-desktop-link;
       font-size: rem(18);
       position: absolute;
       left: rem(5);
@@ -234,7 +234,7 @@ body.section-module {
     }
 
     a {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       text-decoration: none;
     }
 
@@ -281,9 +281,9 @@ body.section-module {
     justify-content: space-between;
 
     .btn {
-      background: $clr-green;
+      background: $clr-desktop-link;
       border-radius: rem(25);
-      color: $clr-navy;
+      color: $clr-desktop-text;
       display: flex;
       font-weight: $font-weight-semibold;
       justify-content: center;
