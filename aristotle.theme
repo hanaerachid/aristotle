@@ -558,12 +558,13 @@ function aristotle_preprocess_menu_local_action(&$variables) {
   $cache->addCacheContexts(['url.path']);
   $cache->applyTo($variables);
 
+  if (isset($variables["link"]["#options"]["attributes"]["class"])) {
+    $variables["link"]["#options"]["attributes"]["class"][] = 'btn';
+    $variables["link"]["#options"]["attributes"]["class"][] = 'btn-rounded';
+  }
+
   $current_path = \Drupal::service('path.current')->getPath();
   if (\Drupal::service('path.matcher')->matchPath($current_path, '/forum*')) {
-    if (isset($variables["link"]["#options"]["attributes"]["class"])) {
-      $variables["link"]["#options"]["attributes"]["class"][] = 'btn';
-      $variables["link"]["#options"]["attributes"]["class"][] = 'btn-rounded';
-    }
     if (isset($variables["attributes"]["class"])) {
       $variables["link"]["#options"]["attributes"]["class"][] = 'forum-action-links';
     }
