@@ -5,7 +5,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-desktop-link;
+        border-color: $clr-desktop-button-color;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
 
@@ -17,7 +17,7 @@
 
     > .dropdown-toggle {
       background: $clr-white;
-      border: 1px solid $clr-desktop-link;
+      border: 1px solid $clr-desktop-button-color;
       border-radius: rem(10);
       color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
@@ -42,7 +42,7 @@
     }
 
     > .dropdown-menu {
-      border: 1px solid $clr-desktop-link;
+      border: 1px solid $clr-desktop-button-color;
       border-top: none;
       border-radius: 0 0 rem(10) rem(10);
       box-shadow: none;

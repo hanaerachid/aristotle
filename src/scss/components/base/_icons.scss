@@ -16,7 +16,7 @@
 
   &_passed {
     .fi {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 
@@ -70,7 +70,7 @@
   }
 
   .passed {
-    background: $clr-green;
+    background: $clr-desktop-link;
   }
 
   .in-progress,
@@ -95,16 +95,16 @@
 
   &.passed {
     background: none;
-    color: $clr-navy;
+    color: $clr-desktop-text;
 
     &:before {
-      background: $clr-green;
+      background: $clr-desktop-link;
     }
   }
 
   &.pending {
     background: none;
-    color: $clr-navy;
+    color: $clr-desktop-text;
 
     &:before {
       background: $clr-gray;
@@ -113,7 +113,7 @@
 
   &.failed {
     background: none;
-    color: $clr-navy;
+    color: $clr-desktop-text;
 
     &:before {
       background: $clr-red;
@@ -127,4 +127,12 @@
     margin-right: rem(10);
     width: rem(12);
   }
+}
+
+.video-call-icon {
+  background: url(../images/design/video-call.svg) center/cover no-repeat;
+}
+
+.ilt-event-icon {
+  background: url(../images/design/ilt.svg) center/cover no-repeat;
 }

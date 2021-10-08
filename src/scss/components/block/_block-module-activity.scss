@@ -26,6 +26,16 @@ body.section-module {
       }
     }
   }
+
+  &:not(.fullscreen) {
+    &.toolbar-horizontal {
+      padding-top: 39px !important;
+    }
+
+    &.toolbar-tray-open {
+      padding-top: 79px !important;
+    }
+  }
 }
 
 .opigno-lp-step-activity {

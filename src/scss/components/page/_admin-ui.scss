@@ -25,6 +25,29 @@
     }
   }
 
+  .view {
+    .content-box {
+      overflow: visible;
+    }
+
+    .views-responsive-table-wrapper {
+      overflow-x: auto;
+
+      @include media-breakpoint-up(md) {
+        overflow: visible;
+      }
+    }
+
+    .views-field-filename {
+      max-width: rem(400);
+      word-break: break-word;
+    }
+
+    .views-field-count {
+      white-space: nowrap;
+    }
+  }
+
   #edit-header > .form-wrapper {
     align-items: flex-end;
     display: flex;
@@ -54,6 +77,17 @@
   .user-form {
     margin-bottom: rem(50);
     max-width: rem(890);
+
+    .form-actions {
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+
+      .form-submit {
+        + .form-submit {
+          margin-right: rem(20);
+        }
+      }
+    }
   }
 
   .fieldgroup {
@@ -159,6 +193,7 @@
 
   .field--name-field-learning-path-enable-forum,
   .field--name-field-certificate-expire,
+  .field--name-badge-active,
   .field--name-group-roles {
     .js-form-type-checkbox,
     .js-form-type-radio {
@@ -207,7 +242,7 @@
     }
 
     &:focus {
-      border-color: $clr-desktop-link;
+      border-color: $clr-desktop-button-color;
     }
   }
 
@@ -231,7 +266,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-desktop-link;
+        border-color: $clr-desktop-button-color;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -239,7 +274,7 @@
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-desktop-link;
+          border-bottom: 1px solid $clr-desktop-button-color;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -253,7 +288,7 @@
       z-index: 600;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-desktop-link;
+        border: 1px solid $clr-desktop-button-color;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -272,46 +307,11 @@
   .form-actions {
     display: flex;
     justify-content: flex-end;
+    margin-top: rem(20);
 
-    .form-submit,
-    .button {
-      ~ .form-submit,
-      ~ .button {
+    #edit-unpublish {
+      ~ #edit-delete {
         margin-left: 5%;
-      }
-    }
-  }
-
-  #block-primaryadminactions {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: rem(10);
-
-    > li {
-      margin-right: rem(10);
-      margin-bottom: rem(10);
-      list-style: none;
-    }
-
-    .button-action {
-      border: 2px solid $clr-desktop-button-color;
-      border-radius: rem(25);
-      color: $clr-desktop-button-text-color;
-      display: inline-flex;
-      font-weight: $font-weight-semibold;
-      justify-content: center;
-      height: auto;
-      min-width: rem(180);
-      padding: rem(10) rem(15);
-      text-decoration: none;
-      transition: .3s ease;
-      width: auto;
-
-      &:hover {
-        background: $clr-desktop-button-color;
-        box-shadow: 0 3px 6px rgba($clr-black, .3);
-        text-decoration: none;
-        transform: translateY(-3px);
       }
     }
   }
@@ -397,10 +397,16 @@
     }
 
     .field--name-label,
+    .field--name-badge-name,
     .field--name-field-learning-path-description,
+    .field--name-field-course-description,
     .field--name-field-certificate-expire,
+    .field--name-badge-active,
     .field--name-field-learning-path-media-image,
-    .field--name-field-class-description {
+    .field--name-field-course-media-image,
+    .field--name-badge-media-image,
+    .field--name-field-class-description,
+    .field--name-badge-description {
       .field,
       .js-filter-wrapper,
       .fieldset-wrapper {
@@ -422,7 +428,7 @@
       order: 1;
 
       &:hover {
-        background-color: $clr-green;
+        background-color: $clr-desktop-button-color-hover-secondary;
       }
     }
 
@@ -445,8 +451,8 @@
     }
 
     .btn_create {
-      background-color: $clr-green !important;
-      color: $clr-navy !important;
+      background-color: $clr-desktop-button-color !important;
+      color: $clr-desktop-text !important;
       height: auto;
       margin: 0;
       text-transform: none;
@@ -474,19 +480,19 @@
       width: rem(16);
 
       &:hover {
-        background: rgba($clr-green, .8);
-        box-shadow: 0 0 0 2px $clr-green;
+        background: $clr-desktop-button-color-hover-secondary;
+        box-shadow: 0 0 0 2px $clr-desktop-button-color-hover-secondary;
       }
 
       &:checked {
-        background: $clr-green;
-        border-color: $clr-green;
+        background: $clr-desktop-button-color;
+        border-color: $clr-desktop-button-color;
         box-shadow: none;
       }
 
       &:disabled {
-        background: $clr-green-light;
-        border-color: $clr-green-light;
+        background: $clr-gray-light;
+        border-color: $clr-gray-light;
         box-shadow: none;
         cursor: default;
       }
@@ -499,12 +505,62 @@
     margin-bottom: rem(20);
     padding: rem(20);
   }
+
+  .dropbutton-multiple {
+    .dropbutton-widget {
+      background: $clr-white;
+      border-radius: rem(10);
+      border: 1px solid $clr-gray-light-D5;
+    }
+
+    .dropbutton-toggle {
+      border-left: 1px solid $clr-gray-light-D5;
+    }
+  }
+
+  .dropbutton-action {
+    ~ .dropbutton-action {
+      border-top: 1px solid $clr-gray-light-D5;
+    }
+
+    .form-submit {
+      background: none;
+      border: none;
+      border-radius: 0;
+      display: block;
+      font-weight: $font-weight-bold;
+      min-height: 0;
+      min-width: 0;
+      padding: rem(5) rem(15);
+      text-align: left;
+      width: 100%;
+
+      &:hover {
+        background: $clr-gray-light;
+        box-shadow: none;
+        transform: none;
+      }
+    }
+  }
+
+  #edit-opigno-badges-settings-group {
+    flex-direction: column;
+
+    > .fieldset-wrapper {
+      max-width: 100%;
+
+      .form-textarea {
+        max-width: 100%;
+      }
+    }
+  }
 }
 
 .section-admin,
 .login-container,
 .opigno-activity-form,
-.opigno-module-form {
+.opigno-module-form,
+.opigno-calendar-event-form {
   .form-managed-file {
     display: flex;
     position: relative;
@@ -560,7 +616,7 @@
       position: relative;
 
       &:before {
-        border: 1px solid $clr-navy;
+        border: 1px solid $clr-desktop-text;
         content: '';
         height: rem(16);
         position: absolute;
@@ -591,8 +647,8 @@
         ~ label.option {
           &:hover {
             &:before {
-              background: rgba($clr-green, .8);
-              box-shadow: 0 0 0 2px rgba($clr-green, .8);
+              background: $clr-desktop-button-color-hover-secondary;
+              box-shadow: 0 0 0 2px $clr-desktop-button-color-hover-secondary;
             }
           }
         }
@@ -601,7 +657,7 @@
       &:checked {
         ~ label.option {
           &:before {
-            border-color: $clr-green;
+            border-color: $clr-desktop-button-color;
           }
         }
       }
@@ -619,7 +675,7 @@
       &:checked {
         ~ label.option {
           &:after {
-            background: $clr-green;
+            background: $clr-desktop-button-color;
             border-radius: 50%;
             content: '';
             display: block;
@@ -651,7 +707,7 @@
           @extend .fi-rr-check;
 
           &:before {
-            background: $clr-green;
+            background: $clr-desktop-button-color;
           }
         }
       }
@@ -665,7 +721,8 @@
 }
 
 .opigno-activity-form,
-.opigno-module-form {
+.opigno-module-form,
+.opigno-calendar-event-form {
   .vertical-tabs__pane {
     .form-item {
       display: block;
@@ -711,9 +768,11 @@
     }
   }
 
+  .field--name-title,
   .field--name-name,
   .field--name-description,
-  .field--name-module-media-image {
+  .field--name-module-media-image,
+  .field--name-badge-media-image {
     .field,
     .js-filter-wrapper,
     .fieldset-wrapper {
@@ -738,6 +797,17 @@
 
     .js-filter-wrapper {
       margin-left: rem(110);
+    }
+  }
+
+  .field--name-field-calendar-event-members {
+    .form-item {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .field-multiple-table {
+      flex: 1 0 100%;
     }
   }
 }
@@ -808,7 +878,7 @@
     }
 
     &:focus {
-      border-color: $clr-desktop-link;
+      border-color: $clr-desktop-button-color;
     }
   }
 
@@ -832,7 +902,7 @@
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-desktop-link;
+        border-color: $clr-desktop-button-color;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -840,7 +910,7 @@
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-desktop-link;
+          border-bottom: 1px solid $clr-desktop-button-color;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -874,10 +944,8 @@
     display: flex;
     justify-content: flex-end;
 
-    .form-submit,
-    .button {
-      ~ .form-submit,
-      ~ .button {
+    #edit-unpublish {
+      ~ #edit-delete {
         margin-left: 5%;
       }
     }
@@ -915,6 +983,45 @@
     &__percentage {
       color: $clr-desktop-text;
       font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+.container-inline {
+  .bootstrap-select {
+    > .dropdown-toggle {
+      min-height: rem(35);
+    }
+
+    > .dropdown-menu {
+      transform: translate(0, 35px) !important;
+
+      &[x-placement=top-start] {
+        border-radius: 0 0 rem(10) rem(10);
+        border: 1px solid $clr-desktop-button-color;
+        border-top: none;
+      }
+
+      > .inner {
+        display: block;
+      }
+
+      li {
+        .dropdown-item {
+          .arrange & {
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
+        }
+      }
+    }
+
+    .dropdown-menu {
+      display: none;
+
+      &.show {
+        display: block;
+      }
     }
   }
 }

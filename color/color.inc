@@ -21,6 +21,8 @@ $info = [
     'desktop_link' => t('Desktop link color'),
     'desktop_link_hover' => t('Desktop link hover color'),
     'desktop_button_color' => t('Desktop button color'),
+    'desktop_button_color_hover_primary' => t('Desktop button color hover (Primary)'),
+    'desktop_button_color_hover_secondary' => t('Desktop button color hover (Secondary)'),
     'desktop_button_text_color' => t('Desktop button text color'),
   ],
   // Pre-defined color schemes.
@@ -47,10 +49,12 @@ $info = [
         'desktop_link' => '#4ad3b2',
         'desktop_link_hover' => '#2f3755',
         'desktop_button_color' => '#4ad3b3',
+        'desktop_button_color_hover_primary' => '#43b598',
+        'desktop_button_color_hover_secondary' => '#a4e9d7',
         'desktop_button_text_color' => '#2f3754',
       ],
     ],
   ],
 ];
 // CSS files (excluding @import) to rewrite with new color scheme.
-$info['css'] = ['dist/css/main.css'];
+$info['css'] = ['color/color.css'];

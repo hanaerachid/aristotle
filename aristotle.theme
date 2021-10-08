@@ -30,7 +30,6 @@ use Drupal\views\ViewExecutable;
 
 define('ARISTOTLE_HOMEPAGE_DEFAULT_NUM_SLIDES', 1);
 define('ARISTOTLE_HOMEPAGE_IMAGE_STYLE', 'frontpage_slider');
-define('IS_DEV', TRUE);
 
 /**
  * Implements hook_theme().
@@ -315,10 +314,6 @@ function aristotle_preprocess_page(&$variables) {
   /* About opigno version */
   if (function_exists('opigno_lms_check_opigno_lms_updates') && function_exists('update_get_available')) {
     $variables['opigno_lms_updates'] = opigno_lms_check_opigno_lms_updates() ? 'nok' : 'ok';
-  }
-
-  if (function_exists('opigno_lms_get_current_opigno_lms_release')) {
-    $variables['opigno_lms_release'] = opigno_lms_get_current_opigno_lms_release();
   }
 
   if (function_exists('opigno_search_block_form')) {
@@ -808,8 +803,10 @@ function aristotle_form_user_register_form_alter(&$form, FormStateInterface $for
 function aristotle_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form['account']['name']['#attributes']['placeholder'] = $form['account']['name']['#title'] ?? t('Username');
   $form['account']['mail']['#attributes']['placeholder'] = $form['account']['mail']['#title'] ?? t('Email address');
-  $form['account']['pass']['#process'][] = 'user_form_process_password_confirm';
-  $form['account']['pass']['#process'][] = 'aristotle_user_form_process_pass';
+  if (isset($form['account']['pass']) && $form['account']['pass']['#type'] == 'password_confirm') {
+    $form['account']['pass']['#process'][] = 'user_form_process_password_confirm';
+    $form['account']['pass']['#process'][] = 'aristotle_user_form_process_pass';
+  }
 }
 
 /**

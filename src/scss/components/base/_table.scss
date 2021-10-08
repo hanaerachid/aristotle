@@ -550,6 +550,10 @@ td {
       font-style: italic;
     }
   }
+
+  a {
+    word-break: break-word;
+  }
 }
 
 .documents-table {

@@ -140,7 +140,7 @@
 
   &.active,
   &:active {
-    background: $clr-green;
+    background: $clr-desktop-button-color-hover-secondary;
     color: $dropdown-link-active-color;
     text-decoration: none;
   }
@@ -183,7 +183,7 @@
   .dropdown-menu {
     padding: 4px 0;
   }
-  
+
   .dropdown-item-text {
     &.icon.compact {
       background: none;
@@ -193,6 +193,20 @@
       height: auto;
       text-indent: 0;
       width: auto;
+    }
+  }
+}
+.views-displays {
+  .tabs {
+    .action-list {
+      input.form-submit {
+        display: block;
+        min-height: 0;
+        min-width: 0;
+        padding: 3px 0;
+        text-align: left;
+        transform: none;
+      }
     }
   }
 }

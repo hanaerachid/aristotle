@@ -13,7 +13,8 @@ form {
   }
 }
 
-.entity-browser-media-entity-browser-groups-form.entity-browser-form {
+.entity-browser-media-entity-browser-groups-form.entity-browser-form,
+.entity-browser-media-entity-browser-badge-images-form.entity-browser-form {
   .form-item-widget {
     margin: 0 !important;
   }
@@ -49,7 +50,7 @@ form {
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-green;
+        border-color: $clr-desktop-button-color;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -61,7 +62,7 @@ form {
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-green;
+          border-bottom: 1px solid $clr-desktop-button-color;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -74,7 +75,7 @@ form {
       min-width: 100% !important;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-green;
+        border: 1px solid $clr-desktop-button-color;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -105,14 +106,14 @@ form {
     }
 
     a {
-      color: $clr-navy;
+      color: $clr-desktop-text;
       text-decoration: underline;
     }
   }
 }
 
 .group-content-learning-path-group-membership-add-form {
-  color: $clr-navy;
+  color: $clr-desktop-text;
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -129,13 +130,13 @@ form {
 .learning-path-create-member-form {
   .btn_create {
     background-color: $clr-gray-light;
-    border-left: 2px solid $clr-green !important;
-    color: $clr-navy;
+    border-left: 2px solid $clr-desktop-button-color !important;
+    color: $clr-desktop-text;
     transition: .3s ease;
 
     &:hover {
-      background-color: $clr-green !important;
-      color: $clr-navy !important;
+      background-color: $clr-desktop-button-color-hover-primary !important;
+      color: $clr-desktop-text !important;
     }
   }
 }
@@ -183,7 +184,7 @@ form {
     }
 
     &:focus {
-      border-color: $clr-desktop-link;
+      border-color: $clr-desktop-button-color;
     }
   }
 
@@ -207,7 +208,7 @@ form {
 
     &.show {
       > .dropdown-toggle {
-        border-color: $clr-desktop-link;
+        border-color: $clr-desktop-button-color;
         border-bottom-color: transparent;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -215,7 +216,7 @@ form {
       &.dropup {
         > .dropdown-toggle {
           border-top-color: transparent;
-          border-bottom: 1px solid $clr-desktop-link;
+          border-bottom: 1px solid $clr-desktop-button-color;
           border-radius: 0 0 rem(10) rem(10);
         }
       }
@@ -229,7 +230,7 @@ form {
       z-index: 600;
 
       &[x-placement="top-start"] {
-        border: 1px solid $clr-desktop-link;
+        border: 1px solid $clr-desktop-button-color;
         border-bottom: none;
         border-radius: rem(10) rem(10) 0 0;
       }
@@ -300,8 +301,8 @@ form {
         ~ label.option {
           &:hover {
             &:before {
-              background: rgba($clr-green, .8);
-              box-shadow: 0 0 0 2px rgba($clr-green, .8);
+              background: $clr-desktop-button-color-hover-secondary;
+              box-shadow: 0 0 0 2px $clr-desktop-button-color-hover-secondary;
             }
           }
         }
@@ -310,7 +311,7 @@ form {
       &:checked {
         ~ label.option {
           &:before {
-            border-color: $clr-green;
+            border-color: $clr-desktop-button-color;
           }
         }
       }
@@ -328,7 +329,7 @@ form {
       &:checked {
         ~ label.option {
           &:after {
-            background: $clr-green;
+            background: $clr-desktop-button-color;
             border-radius: 50%;
             content: '';
             display: block;
@@ -360,7 +361,7 @@ form {
           @extend .fi-rr-check;
 
           &:before {
-            background: $clr-green;
+            background: $clr-desktop-button-color;
           }
         }
       }
@@ -385,6 +386,34 @@ form {
   > .form-item {
     &:first-child {
       margin-top: rem(20);
+    }
+  }
+}
+
+.group-content-learning-path-group-membership-group-join-form {
+  .form-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .button {
+      align-items: center;
+      background-color: $clr-white;
+      border: 2px solid $clr-desktop-button-color;
+      border-radius: rem(25);
+      color: $clr-desktop-button-text-color;
+      display: inline-flex;
+      font-weight: $font-weight-semibold;
+      justify-content: center;
+      line-height: 1;
+      min-height: rem(40);
+      min-width: rem(156);
+      padding: rem(10) rem(15);
+      text-decoration: none;
+    }
+
+    .form-submit {
+      background: $clr-desktop-button-color;
     }
   }
 }

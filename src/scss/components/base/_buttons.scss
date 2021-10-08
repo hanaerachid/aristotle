@@ -20,10 +20,9 @@
   &:focus,
   &.focus,
   &:hover {
-    box-shadow: 0 3px 6px rgba($clr-black, .3);
+    background-color: $clr-desktop-button-color-hover-secondary;
     color: $clr-desktop-button-text-color;
     text-decoration: none;
-    transform: translateY(-3px);
   }
 
   &:focus,
@@ -80,6 +79,11 @@
 
 .btn-bg {
   background-color: $clr-desktop-button-color;
+
+  &:hover {
+    background-color: $clr-desktop-button-color-hover-primary;
+    border-color: $clr-desktop-button-color-hover-primary;
+  }
 }
 
 .btn-big-text {
@@ -150,8 +154,8 @@
     @extend .fi-rr-plus;
     align-items: center;
     border-radius: rem(30);
-    border: 2px solid $clr-desktop-link;
-    color: $clr-desktop-text;
+    border: 2px solid $clr-desktop-button-color;
+    color: $clr-desktop-button-text-color;
     display: flex;
     flex-direction: row-reverse;
     font-size: rem(14);
@@ -163,7 +167,7 @@
     width: rem(36);
 
     &:hover {
-      background: $clr-desktop-link;
+      background: $clr-desktop-button-color-hover-secondary;
       text-decoration: none;
       width: rem(90);
 
@@ -260,7 +264,7 @@
 .btn-connection {
   background: $clr-white;
   border-radius: rem(10);
-  color: $clr-navy;
+  color: $clr-desktop-button-text-color;
   font-weight: $font-weight-semibold;
   padding: rem(6) rem(20);
   position: relative;
@@ -274,7 +278,7 @@
 
   &:active {
     &.accept {
-      background: $clr-green;
+      background: $clr-desktop-button-color;
     }
 
     &.decline {
@@ -284,7 +288,7 @@
   }
 
   &.invited {
-    background: $clr-green;
+    background: $clr-desktop-button-color;
     cursor: default;
 
     .fi {
@@ -327,6 +331,17 @@
     left: rem(25);
     transform: translateY(-50%);
     font-size: rem(32);
+  }
+}
+
+#block-primaryadminactions {
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    margin-right: rem(10);
+    margin-bottom: rem(10);
+    list-style: none;
   }
 }
 
@@ -601,6 +616,12 @@ fieldset:disabled a.btn {
   }
 }
 
+#add-first-entity {
+  @extend .btn;
+  @extend .btn-rounded;
+  font-family: $font-family-sans-serif;
+}
+
 .mat-radio-group {
   margin-top: rem(20);
 
@@ -652,5 +673,30 @@ fieldset:disabled a.btn {
 .ckeditor-button {
   a {
     box-sizing: content-box;
+  }
+}
+
+#start-meeting {
+  background: $clr-gray-light;
+  border-radius: rem(10);
+  color: $clr-desktop-text;
+  display: block;
+  font-size: rem(20);
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  padding: rem(20);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background .3s ease;
+
+  &:hover {
+    background: $clr-gray-light-D5;
+  }
+
+  .fi {
+    display: block;
+    font-size: rem(70);
+    margin-top: rem(20);
   }
 }

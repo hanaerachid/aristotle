@@ -146,8 +146,9 @@ app-root.dashboard {
   align-items: center;
   position: relative;
   padding: 0 !important;
-  background-color: $clr-green !important;
+  background-color: $clr-desktop-button-color !important;
   border-radius: rem(18);
+  color: $clr-desktop-button-text-color;
 
   + .dashboard-block {
     margin-top: rem(13);

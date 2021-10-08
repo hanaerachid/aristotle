@@ -76,19 +76,10 @@
     .private-message {
       border-radius: rem(10);
       box-shadow: 0 3px 6px rgba($clr-black, .3);
-      flex: 0 0 45%;
-      max-width: 45%;
+      min-width: 13%;
+      max-width: 66%;
       position: relative;
-
-      @include media-breakpoint-down(lg) {
-        flex: 0 0 65%;
-        max-width: 65%;
-      }
-
-      @include media-breakpoint-down(md) {
-        flex: 0 0 85%;
-        max-width: 85%;
-      }
+      word-break: break-word;
     }
 
     .private-message-author-other {
@@ -175,7 +166,7 @@
     }
 
     .field--name-message {
-      border: 1px solid $clr-green;
+      border: 1px solid $clr-desktop-button-color;
       border-radius: rem(10);
       flex: 1 1 auto;
       overflow: hidden;

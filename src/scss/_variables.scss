@@ -65,15 +65,17 @@ $theme-colors: (
 );
 
 // Desktop colors from color.module config
-$clr-desktop-header-bg: #2f3759;
-$clr-desktop-header-link: #fffffe;
-$clr-desktop-header-link-active: #4ad3b1;
-$clr-desktop-headings: #2f3757;
-$clr-desktop-text: #2f3756;
-$clr-desktop-link: #4ad3b2;
-$clr-desktop-link-hover: #2f3755;
-$clr-desktop-button-color: #4ad3b3;
-$clr-desktop-button-text-color: #2f3754;
+$clr-desktop-header-bg: var(--desktop-header-bg);
+$clr-desktop-header-link: var(--desktop-header-link);
+$clr-desktop-header-link-active: var(--desktop-header-link-active);
+$clr-desktop-headings: var(--desktop-headings);
+$clr-desktop-text: var(--desktop-text);
+$clr-desktop-link: var(--desktop-link);
+$clr-desktop-link-hover: var(--desktop-link-hover);
+$clr-desktop-button-color: var(--desktop-button-color);
+$clr-desktop-button-color-hover-primary: var(--desktop-button-color-hover-primary);
+$clr-desktop-button-color-hover-secondary: var(--desktop-button-color-hover-secondary);
+$clr-desktop-button-text-color: var(--desktop-button-text-color);
 
 // 2. Typography
 $rem-base: 16;

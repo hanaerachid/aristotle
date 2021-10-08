@@ -34,14 +34,20 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
   }
   $form_state->setBuildInfo($build_info);
 
+
   $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
   $logo_path = $theme_path . '/assets/';
 
   $form['logo']['logo_path_anonymous'] = [
     '#type' => 'textfield',
-    '#title' => t('Path to custom logo'),
+    '#title' => t('Path to homepage logo'),
     '#default_value' => theme_get_setting('logo_path_anonymous'),
-    '#description' => t('Examples: <code>@implicit-public-file</code>,<code>@implicit-public-file</code> or <code>@implicit-file</code>.', [
+    '#states' => [
+      'invisible' => [
+        'input[name="aristotle_home_page_settings[aristotle_use_home_page_markup]"]' => ['checked' => FALSE],
+      ],
+    ],
+    '#description' => t('Examples: <code>@implicit-public-file</code>,<code>@implicit-public-file</code> or <code>@implicit-file</code>.<br>If the "different homepage for anonymous users" option is enabled allows overriding the logo on the homepage.', [
       '@implicit-public-file' => $logo_path . 'Logo-Opigno-3-dark.svg',
       '@implicit-file' => 'Logo-Opigno-3-dark.svg',
       '@implicit-schema-file' => 'public://Logo-Opigno-3-dark.svg',
@@ -50,10 +56,15 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
 
   $form['logo']['logo_anonymous_upload'] = [
     '#type' => 'file',
-    '#title' => t('Upload logo image'),
+    '#title' => t('Upload homepage logo image'),
     '#upload_location' => 'public://',
     '#upload_validators' => [
       'file_validate_extensions' => ['gif png jpg jpeg svg'],
+    ],
+    '#states' => [
+      'invisible' => [
+        'input[name="aristotle_home_page_settings[aristotle_use_home_page_markup]"]' => ['checked' => FALSE],
+      ],
     ],
     '#description' => t("If you don't have direct file access to the server, use this field to upload your logo."),
   ];

@@ -46,7 +46,7 @@
   {{ title_prefix }}
   {% block title %}
   {% if view.title %}
-    <h2 class="content-box__title">{{ view.title }}</h2>
+    <h2 class="content-box__title">{{ view.title|raw }}</h2>
   {% endif %}
   {% endblock %}
   {{ title_suffix }}

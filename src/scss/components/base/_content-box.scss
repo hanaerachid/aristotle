@@ -55,6 +55,108 @@
   }
 }
 
+.meeting-start-soon {
+  align-items: center;
+  background: $clr-green-light;
+  display: flex;
+  justify-content: space-between;
+
+  @include media-breakpoint-down(sm) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+
+    @include media-breakpoint-down(sm) {
+      align-items: flex-start;
+      margin-bottom: rem(20);
+    }
+  }
+
+  .meeting-icon {
+    flex: 1 0 rem(63);
+    height: rem(63);
+    margin-right: rem(20);
+    width: rem(63);
+
+    @include media-breakpoint-down(sm) {
+      flex: 1 0 rem(40);
+      height: rem(40);
+      margin-right: rem(10);
+      width: rem(40);
+    }
+  }
+
+  &__body {
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-weight: $font-weight-semibold;
+    margin: 0;
+    text-transform: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &__action {
+    @include media-breakpoint-down(sm) {
+      margin-left: auto;
+    }
+  }
+
+  .btn {
+    min-width: rem(180);
+  }
+}
+
+.meeting-start-container {
+  align-items: stretch;
+  border: 2px solid $clr-desktop-button-color;
+  border-radius: rem(20);
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  height: 67vh;
+  max-height: rem(740);
+
+  .start-meeting {
+    margin: auto;
+  }
+}
+
+.meeting-start-container,
+.meeting-started,
+.meeting-ended {
+  ~ .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: rem(50);
+  }
+}
+
+#live-meeting-container {
+  align-items: stretch;
+  display: flex;
+  height: calc(67vh - 20px);
+  max-height: rem(700);
+  width: 100%;
+
+  &:empty {
+    display: none;
+  }
+
+  iframe {
+    border: none;
+    height: auto;
+  }
+}
+
 .view-user-connections,
 .view-user-invitations {
   .content-box__title {
@@ -531,12 +633,14 @@
   }
 
   .active {
-    a {
+    a,
+    span {
       background: $clr-desktop-link;
     }
   }
 
-  a {
+  a,
+  span {
     background: $clr-gray-light;
     border-radius: rem(10);
     color: $clr-desktop-text;
@@ -544,7 +648,9 @@
     padding: rem(15) rem(10);
     text-decoration: none;
     transition: .3s ease;
+  }
 
+  a {
     &:hover {
       background: $clr-desktop-link;
     }
