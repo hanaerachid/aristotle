@@ -13,6 +13,14 @@
       color: $clr-desktop-link;
     }
   }
+
+  .user-menu-list {
+    .user-menu-item-text {
+      .fi {
+        color: inherit;
+      }
+    }
+  }
 }
 
 .user-menu-list {
@@ -52,7 +60,6 @@
     }
 
     .fi {
-      color: inherit;
       margin-right: rem(10);
 
       @include media-breakpoint-down(md) {

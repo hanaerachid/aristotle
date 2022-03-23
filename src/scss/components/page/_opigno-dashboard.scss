@@ -148,7 +148,7 @@ app-root.dashboard {
   padding: 0 !important;
   background-color: $clr-desktop-button-color !important;
   border-radius: rem(18);
-  color: $clr-desktop-button-text-color;
+  color: $clr-desktop-button-text-primary;
 
   + .dashboard-block {
     margin-top: rem(13);

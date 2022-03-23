@@ -31,7 +31,7 @@
       &:checked {
         ~ label.option {
           background-color: $clr-desktop-button-color;
-          color: $clr-desktop-button-text-color;
+          color: $clr-desktop-button-text-primary;
 
           &:before {
             opacity: 1;

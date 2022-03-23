@@ -33,9 +33,6 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">
     <js-placeholder token="{{ placeholder_token }}">
-    {% if aristotle_css != false %}
-    <style media="all">{{ aristotle_css }}</style>
-    {% endif %}
   </head>
   <body {{ attributes }}>
     <a href="#main-content" class="visually-hidden focusable">

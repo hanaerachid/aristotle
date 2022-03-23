@@ -141,6 +141,12 @@
     }
   }
 
+  [id^="field-"][id$="-add-more-wrapper"] {
+    > .form-item {
+      display: block;
+    }
+  }
+
   .password-strength {
     &__meter,
     &__indicator {
@@ -383,6 +389,91 @@
     }
   }
 
+  summary {
+    font-weight: $font-weight-semibold;
+    margin-bottom: rem(10);
+  }
+
+  .field--type-image {
+    details {
+      > table {
+        + .form-item {
+          margin-top: rem(30);
+        }
+      }
+    }
+  }
+
+  tr.draggable {
+    .form-managed-file {
+      .upload-field {
+        margin-right: 0;
+      }
+
+      .form-item {
+        display: block;
+      }
+
+      .form-submit {
+        display: none;
+      }
+    }
+  }
+
+  .image-effect-form {
+    .form-item {
+      > legend,
+      > .label,
+      > .field {
+        align-items: center;
+        display: inline-flex;
+      }
+
+      > legend,
+      > .label {
+        flex: 0 0 rem(100);
+        padding-right: rem(10);
+      }
+
+      > .field {
+        flex: 0 0 auto;
+      }
+
+      legend,
+      label {
+        margin-bottom: 0;
+      }
+
+      legend {
+        align-self: flex-start;
+      }
+
+      .form-number {
+        margin-right: rem(10);
+        width: auto;
+      }
+    }
+  }
+
+  .image-anchor {
+    margin-bottom: rem(10);
+
+    tbody {
+      td {
+        border: 1px solid $clr-desktop-text;
+      }
+    }
+
+    .form-checkbox,
+    .form-radio {
+      position: relative;
+      clip: auto;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+  }
+
 /*
  * Admin forms
  */
@@ -507,6 +598,12 @@
   }
 
   .dropbutton-multiple {
+    &:not(.open) {
+      .dropbutton-widget {
+        padding-right: rem(40);
+      }
+    }
+
     .dropbutton-widget {
       background: $clr-white;
       border-radius: rem(10);
@@ -768,8 +865,15 @@
     }
   }
 
+  [id^="field-"][id$="-add-more-wrapper"] {
+    > .form-item {
+      display: block;
+    }
+  }
+
   .field--name-title,
   .field--name-name,
+  .field--name-langcode,
   .field--name-description,
   .field--name-module-media-image,
   .field--name-badge-media-image {
@@ -1023,5 +1127,21 @@
         display: block;
       }
     }
+  }
+}
+
+.image-style-new {
+  .bootstrap-select {
+    .dropdown-menu {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  .form-submit {
+    margin-top: rem(10);
   }
 }

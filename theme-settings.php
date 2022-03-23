@@ -8,7 +8,6 @@
 use Drupal\aristotle\ThemeSettingsPreRender;
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\file\Entity\File;
 
 /**
@@ -16,12 +15,12 @@ use Drupal\file\Entity\File;
  *
  * Form override for theme settings.
  */
-function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &$form_state, $form_id = NULL) {
+function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
   // Work-around for a core bug affecting admin themes. See issue #943212.
   if (isset($form_id)) {
     return;
   }
-  $form['#pre_render'][] = [ThemeSettingsPreRender::class,"preRender"];
+  $form['#pre_render'][] = [ThemeSettingsPreRender::class, "preRender"];
   // Load file before running process (prevent not found on ajax,
   // validate and submit handlers).
   $build_info = $form_state->getBuildInfo();
@@ -33,7 +32,6 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
     }
   }
   $form_state->setBuildInfo($build_info);
-
 
   $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
   $logo_path = $theme_path . '/assets/';
@@ -231,7 +229,6 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
 
   // Main menu settings.
   if (\Drupal::moduleHandler()->moduleExists('menu_ui')) {
-
     $form['aristotle_menu_settings'] = [
       '#type' => 'details',
       '#title' => t('Menu settings'),
@@ -253,25 +250,6 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface &
       '#default_value' => theme_get_setting('aristotle_menu_show_for_anonymous'),
     ];
   }
-
-  // CSS settings.
-  $form['aristotle_css_settings'] = [
-    '#type' => 'details',
-    '#title' => t('CSS overrides'),
-    '#open' => TRUE,
-  ];
-
-  $form['aristotle_css_settings']['aristotle_css_override_content'] = [
-    '#type' => 'textarea',
-    '#title' => t('CSS overrides'),
-    '#description' => t("You can write CSS rules here. They will be stored in a CSS file in your public files directory. Change it's content to alter the display of your site."),
-    '#default_value' => _aristotle_get_css_override_file_content(),
-  ];
-
-  $form['aristotle_css_settings']['aristotle_css_override_fid'] = [
-    '#type' => 'hidden',
-    '#value' => (_aristotle_get_css_override_file()) ? _aristotle_get_css_override_file()->id() : NULL,
-  ];
 
   // Validate and submit.
   $form['#validate'][] = 'aristotle_form_system_theme_settings_alter_validate';
@@ -337,22 +315,13 @@ function aristotle_form_system_theme_settings_alter_validate($form, &$form_state
     }
   }
 
-  if ($form_state->getValue('aristotle_css_override_content')) {
-    if ($fid = _aristotle_store_css_override_file($form_state->getValue('aristotle_css_override_content'))) {
-      $new_storage['css_fid'] = $fid;
-    }
-    else {
-      $form_state->setErrorByName('aristotle_css_override_content', t('Could not save the CSS in a file. Perhaps the server has no write access. Check your public files folder permissions.'));
-    }
-  }
-
   $form_state->setStorage($new_storage);
 }
 
 /**
  * Submission callback for aristotle_form_system_theme_settings_alter().
  */
-function aristotle_form_system_theme_settings_alter_submit($form, FormStateInterface &$form_state) {
+function aristotle_form_system_theme_settings_alter_submit($form, FormStateInterface $form_state) {
   $storage = $form_state->getStorage();
 
   $values = $form_state->getValues();
@@ -369,7 +338,6 @@ function aristotle_form_system_theme_settings_alter_submit($form, FormStateInter
     // Ignore.
   }
   $form_state->unsetValue('logo_anonymous_upload');
-
 
   if (isset($storage['aristotle_header_image_path']) && $storage['aristotle_header_image_path']) {
     $file = $storage['aristotle_header_image_path'];
@@ -404,23 +372,6 @@ function aristotle_form_system_theme_settings_alter_submit($form, FormStateInter
       $form_state->setValue('aristotle_home_page_settings', $aristotle_home_page_settings);
     }
   }
-
-  if ($form_state->getValue('aristotle_css_override_content')) {
-    if (isset($storage['css_fid']) && $storage['css_fid']) {
-      $form_state->setValue('aristotle_css_override_fid', $storage['css_fid']);
-    }
-  }
-  else {
-    // If there is a file existing already, we must get rid of it.
-    if ($file = _aristotle_get_css_override_file()) {
-      // "Store" an empty string.
-      // This will not create a file, but set the old one as a temporary one.
-      _aristotle_store_css_override_file('');
-
-      // Set the setting to 0 to not use any file.
-      $form_state->setValue('aristotle_css_override_fid', 0);
-    }
-  }
 }
 
 /**
@@ -430,7 +381,6 @@ function aristotle_form_system_theme_settings_alter_submit($form, FormStateInter
  * them transparent.
  */
 function aristotle_form_system_theme_settings_alter_color_submit($form, $form_state) {
-
 }
 
 /**

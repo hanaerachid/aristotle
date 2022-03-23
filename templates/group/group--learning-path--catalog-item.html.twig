@@ -65,7 +65,7 @@
 
         {% if content.field_learning_path_description|render|striptags|trim is not empty %}
           <div class="views-field-field-learning-path-description">
-            {{ content.field_learning_path_description }}
+            {{ content.field_learning_path_description|render|striptags }}
           </div>
         {% endif %}
 

@@ -283,6 +283,21 @@ body.section-module {
       }
     }
   }
+
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+
+    video,
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 }
 
 .result-item-h5p {
@@ -314,5 +329,17 @@ body.section-module {
   .h5p-true-false-user-response-correct,
   .h5p-true-false-user-response-wrong {
     margin-bottom: rem(8);
+  }
+}
+
+.h5p-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: inherit;
+    text-transform: none;
   }
 }

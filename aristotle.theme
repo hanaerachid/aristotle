@@ -15,8 +15,6 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Element\PasswordConfirm;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
-use Drupal\file\Entity\File;
-use Drupal\file\FileInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\opigno_dashboard\Plugin\Block\AboutOpignoBlock;
@@ -41,7 +39,7 @@ function aristotle_theme() {
         'branding' => NULL,
         'items' => NULL,
       ],
-      'template' => 'aristotle/aristotle--login-front-slider'
+      'template' => 'aristotle/aristotle--login-front-slider',
     ],
   ];
 }
@@ -190,8 +188,10 @@ function aristotle_preprocess_html(&$variables) {
 
   // Add extra class to hide the admin toolbar based on the route setting.
   $route_object = \Drupal::routeMatch()->getRouteObject();
-  if ($route_object->hasOption('_without_toolbar') && $route_object->getOption('_without_toolbar')) {
+  if ($route_object && $route_object->hasOption('_without_toolbar') && $route_object->getOption('_without_toolbar')) {
     $variables['attributes']['class'][] = 'without-admin-toolbar';
+    $style = $variables['attributes']['style'] ?? '';
+    $variables['attributes']['style'] = $style . 'margin:0;';
   }
 
   // The "About Opigno" modal.
@@ -209,13 +209,6 @@ function aristotle_preprocess_html(&$variables) {
     $variables['is_front'] = FALSE;
   }
 
-  if ($route == 'opigno_activity.preview') {
-    $content = $variables['page']['content']['aristotle_content'];
-    unset($variables['page']['content']);
-    unset($variables['page_top']);
-    $variables['page']['content']['aristotle_content'] = $content;
-  }
-
   // If we're on the front page.
   if (!$variables['is_front']) {
     $variables['attributes']['class'][] = 'page-not-front';
@@ -226,7 +219,7 @@ function aristotle_preprocess_html(&$variables) {
     if (!empty($alias)) {
       $name = str_replace('/', '-', $alias);
       $variables['attributes']['class'][] = 'page-' . $name;
-      [$section,] = explode('/', $alias, 2);
+      [$section] = explode('/', $alias, 2);
       if (!empty($section)) {
         $variables['attributes']['class'][] = 'section-' . $section;
       }
@@ -277,12 +270,6 @@ function aristotle_preprocess_html(&$variables) {
     || \Drupal::routeMatch()->getRouteName() == 'opigno_group_manager.manager.get_item_form'
   ) {
     $variables['attributes']['class'][] = 'lp-iframe';
-  }
-
-  /* Add custom theme css */
-  if (($file = _aristotle_get_css_override_file()) && $file instanceof FileInterface) {
-    $file_url = file_create_url($file->getFileUri());
-    $variables['aristotle_css'] = $file_url ? Xss::filter('@import url(' . file_url_transform_relative($file_url) . ')') : FALSE;
   }
 }
 
@@ -377,7 +364,7 @@ function aristotle_preprocess_page(&$variables) {
   /* Frontpage slider */
   $variables['frontpage_slider'] = FALSE;
   if (aristotle_anonymous_has_slider()) {
-    $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings', 'aristotle');
+    $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings');
     $variables['frontpage_slider'] = TRUE;
 
     $slides = [];
@@ -417,8 +404,8 @@ function aristotle_preprocess_block(&$variables) {
   if ($variables["base_plugin_id"] == 'system_menu_block') {
     unset($variables["configuration"]["label_display"]);
   }
-  if ('system_branding_block' == $variables["elements"]["#plugin_id"] &&
-    \Drupal::currentUser()->isAnonymous() &&
+  if ((('system_branding_block' == $variables["elements"]["#plugin_id"] &&
+        \Drupal::currentUser()->isAnonymous()) || (($variables["attributes"]["id"] ?? "") == "block-sitebranding-2")) &&
     isset($variables["content"]["site_logo"])
   ) {
     $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
@@ -447,7 +434,8 @@ function aristotle_preprocess_menu(&$variables, $hook) {
       $render = \Drupal::entityTypeManager()
         ->getViewBuilder('block')
         ->view($block);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       \Drupal::logger('opigno_migration')->error($e->getMessage());
     }
     if (!empty($render)) {
@@ -591,84 +579,6 @@ function aristotle_preprocess_form(&$variables) {
 }
 
 /**
- * Helper function to load the content of the theme override CSS file.
- *
- * If no file exists, will just return an empty string.
- */
-function _aristotle_get_css_override_file_content() {
-  if ($file = _aristotle_get_css_override_file()) {
-    return file_get_contents(\Drupal::service('file_system')->realpath($file->getFileUri()));
-  }
-  else {
-    return FALSE;
-  }
-}
-
-/**
- * Helper function to load the CSS override file.
- *
- * @return object|false
- */
-function _aristotle_get_css_override_file() {
-  $fid = theme_get_setting('aristotle_css_override_fid', 'aristotle');
-  if (!empty($fid)) {
-    $file = File::load($fid);
-    if ($file && is_readable(\Drupal::service('file_system')->realpath($file->getFileUri()))) {
-      return $file;
-    }
-  }
-  return FALSE;
-}
-
-/**
- * Helper function to write the CSS override file.
- *
- * If a file already existed, the old one is set to a temporary file so Drupal cleans it up. Returns the new file fid.
- *
- * @param string $content
- *
- * @return int
- */
-function _aristotle_store_css_override_file(string $content = '') {
-  // If a file already existed, set it to a temporary file so
-  // Drupal cleans it up.
-  if ($file = _aristotle_get_css_override_file()) {
-    $file->setTemporary();
-    $file->save();
-  }
-
-  if (empty($content)) {
-    return 0;
-  }
-
-  // Create a new file.
-  $filename = substr(uniqid(md5($content), TRUE), 0,6) . '_aristotle_override.css';
-  $uri = sprintf("public://%s", $filename);
-  $f = fopen($uri, 'w');
-
-  // If the write succeeds, store it as a managed file.
-  if (fwrite($f, $content)) {
-    fclose($f);
-
-    $file = File::create([
-      'uid' => \Drupal::currentUser()->id(),
-      'filename' => $filename,
-      'uri' => $uri,
-      'status' => FILE_STATUS_PERMANENT,
-    ]);
-
-    $file->save();
-
-    // Return the file id.
-    return $file->id();
-  }
-  else {
-    // The write didn't succeed. Return 0.
-    return 0;
-  }
-}
-
-/**
  * Callback for both ajax-enabled buttons.
  *
  * Selects and returns the fieldset with the names in it.
@@ -677,6 +587,9 @@ function aristotle_form_system_theme_settings_slide_callback(array &$form, FormS
   return $form['aristotle_home_page_settings']['aristotle_home_page_slides'];
 }
 
+/**
+ * Has slider.
+ */
 function aristotle_anonymous_has_slider() {
   if ((\Drupal::service('path.matcher')->isFrontPage()
       || \Drupal::routeMatch()->getRouteName() == 'user.login'
@@ -684,7 +597,7 @@ function aristotle_anonymous_has_slider() {
       || \Drupal::routeMatch()->getRouteName() == 'user.register')
     && \Drupal::currentUser()->isAnonymous()
   ) {
-    $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings', 'aristotle');
+    $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings');
     if (isset($aristotle_home_page_settings['aristotle_use_home_page_markup'])
       && $aristotle_home_page_settings['aristotle_use_home_page_markup']
     ) {
@@ -695,12 +608,17 @@ function aristotle_anonymous_has_slider() {
   return FALSE;
 }
 
+/**
+ * Has menu.
+ */
 function aristotle_anonymous_has_menu() {
-  return theme_get_setting('aristotle_menu_show_for_anonymous', 'aristotle');
+  return theme_get_setting('aristotle_menu_show_for_anonymous');
 }
 
-function aristotle_page_has_faded_background()
-{
+/**
+ * Has faded background.
+ */
+function aristotle_page_has_faded_background() {
   $route = \Drupal::routeMatch()->getRouteName();
 
   $faded_form_routes_names = [
@@ -719,13 +637,13 @@ function aristotle_page_has_faded_background()
     'module_update',
     'backup_migrate',
     'devel',
-    'dblog'
+    'dblog',
   ];
 
-  $faded_form = false;
+  $faded_form = FALSE;
   foreach ($faded_form_routes_names as $key => $value) {
-    if (strpos($route, $value) !== false) {
-      $faded_form = true;
+    if (strpos($route, $value) !== FALSE) {
+      $faded_form = TRUE;
     }
   }
 
@@ -734,11 +652,11 @@ function aristotle_page_has_faded_background()
     'entity.opigno_module.edit_form',
     'entity.group.add_form',
     'entity.group_content.add_form',
-    'opigno_moxtra.settings'
+    'opigno_moxtra.settings',
   ];
 
   if (in_array($route, $none_faded_form_routes_names)) {
-    $faded_form = false;
+    $faded_form = FALSE;
   }
 
   return $faded_form;
@@ -762,7 +680,6 @@ function aristotle_preprocess_views_view_table(&$variables) {
     $variables['#attached']['library'][] = 'opigno_statistics/admin_ui';
   }
 }
-
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -822,7 +739,6 @@ function aristotle_form_user_form_alter(&$form, FormStateInterface $form_state, 
  *
  * @return array
  *   The processed element.
- *
  */
 function aristotle_user_form_process_pass(array &$element, FormStateInterface $form_state, array &$complete_form) {
   $element = PasswordConfirm::processPasswordConfirm($element, $form_state, $complete_form);

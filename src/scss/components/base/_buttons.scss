@@ -4,7 +4,7 @@
   position: relative;
   align-items: center;
   display: inline-flex;
-  color: $clr-desktop-button-text-color;
+  color: $clr-desktop-button-text-secondary;
   white-space: nowrap;
   user-select: none;
   box-shadow: none;
@@ -21,7 +21,7 @@
   &.focus,
   &:hover {
     background-color: $clr-desktop-button-color-hover-secondary;
-    color: $clr-desktop-button-text-color;
+    color: $clr-desktop-button-text-secondary;
     text-decoration: none;
   }
 
@@ -59,11 +59,16 @@
   background-color: $clr-white;
   border: 2px solid $clr-desktop-button-color;
   border-radius: rem(25);
+  color: $clr-desktop-button-text-secondary;
   font-weight: $font-weight-semibold;
   justify-content: center;
   min-height: rem(40);
   min-width: rem(156);
   padding: rem(10) rem(15);
+
+  &:hover {
+    color: $clr-desktop-button-text-secondary;
+  }
 }
 
 .btn-border-red,
@@ -79,10 +84,20 @@
 
 .btn-bg {
   background-color: $clr-desktop-button-color;
+  border-color: $clr-desktop-button-color;
+  color: $clr-desktop-button-text-primary;
 
   &:hover {
     background-color: $clr-desktop-button-color-hover-primary;
     border-color: $clr-desktop-button-color-hover-primary;
+    color: $clr-desktop-button-text-primary;
+  }
+
+  &:focus,
+  &:not(:disabled):not(.disabled):active {
+    background-color: $clr-desktop-button-color;
+    border-color: $clr-desktop-button-color;
+    color: $clr-desktop-button-text-primary;
   }
 }
 
@@ -155,7 +170,7 @@
     align-items: center;
     border-radius: rem(30);
     border: 2px solid $clr-desktop-button-color;
-    color: $clr-desktop-button-text-color;
+    color: $clr-desktop-button-text-primary;
     display: flex;
     flex-direction: row-reverse;
     font-size: rem(14);
@@ -264,7 +279,7 @@
 .btn-connection {
   background: $clr-white;
   border-radius: rem(10);
-  color: $clr-desktop-button-text-color;
+  color: $clr-desktop-button-text-primary;
   font-weight: $font-weight-semibold;
   padding: rem(6) rem(20);
   position: relative;

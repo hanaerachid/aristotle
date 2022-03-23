@@ -1,6 +1,7 @@
 .group-opigno-course {
   .lp-image {
     img {
+      aspect-ratio: 1;
       border-radius: rem(10);
 
       @include media-breakpoint-down(md) {

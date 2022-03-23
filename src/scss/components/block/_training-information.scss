@@ -10,12 +10,11 @@
     max-width: rem(206);
 
     @include media-breakpoint-down(sm) {
-      flex: 1 0 auto;
-      max-width: 100%;
-      margin-bottom: rem(10);
+      margin: 0 auto rem(10);
     }
 
     img {
+      aspect-ratio: 1;
       border-radius: rem(10);
       margin: 0 auto;
     }

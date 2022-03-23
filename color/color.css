@@ -9,5 +9,6 @@
   --desktop-button-color: #4ad3b3;
   --desktop-button-color-hover-primary: #43b598;
   --desktop-button-color-hover-secondary: #a4e9d7;
-  --desktop-button-text-color: #2f3754;
+  --desktop-button-text-primary: #2f3754;
+  --desktop-button-text-secondary: #2f3753;
 }

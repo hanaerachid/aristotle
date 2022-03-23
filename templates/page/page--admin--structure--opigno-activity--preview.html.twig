@@ -46,9 +46,7 @@
  */
 #}
 
-{{ header }}
 <main class="page-main" role="main">
-  {{ page.help }}
   <div class="container">
     {% if page.status_messages %}
       <div class="message-wrapper">
@@ -56,35 +54,10 @@
       </div>
     {% endif %}
 
-    {{ page.top }}
-
     <div class="row">
-      {% if page.sidebar_first %}
-        <div class="col-lg-3" id="sidebar-first">
-          {{ page.sidebar_first }}
-        </div>
-      {% endif %}
-      <div class="{{ page.sidebar_first ? 'col-lg-9' : 'col-lg-12' }}">
-        <div class="show-message-list-wrapper">
-          <a href="#" class="show-message-list">
-            <i class="fi fi-rr-angle-small-left"></i>
-            {{ 'Discussions'|t }}
-          </a>
-        </div>
+      <div class="col-lg-12">
         {{ page.content }}
       </div>
     </div>
   </div>
 </main>
-
-<div class="page-footer" role="banner">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="footer-content">
-          {{ page.footer }}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

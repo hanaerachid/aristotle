@@ -23,7 +23,8 @@ $info = [
     'desktop_button_color' => t('Desktop button color'),
     'desktop_button_color_hover_primary' => t('Desktop button color hover (Primary)'),
     'desktop_button_color_hover_secondary' => t('Desktop button color hover (Secondary)'),
-    'desktop_button_text_color' => t('Desktop button text color'),
+    'desktop_button_text_primary' => t('Desktop button text color (Primary)'),
+    'desktop_button_text_secondary' => t('Desktop button text color (Secondary)'),
   ],
   // Pre-defined color schemes.
   'schemes' => [
@@ -51,10 +52,12 @@ $info = [
         'desktop_button_color' => '#4ad3b3',
         'desktop_button_color_hover_primary' => '#43b598',
         'desktop_button_color_hover_secondary' => '#a4e9d7',
-        'desktop_button_text_color' => '#2f3754',
+        'desktop_button_text_primary' => '#2f3754',
+        'desktop_button_text_secondary' => '#2f3753',
       ],
     ],
   ],
+  'css' => [
+    'color/color.css',
+  ],
 ];
-// CSS files (excluding @import) to rewrite with new color scheme.
-$info['css'] = ['color/color.css'];

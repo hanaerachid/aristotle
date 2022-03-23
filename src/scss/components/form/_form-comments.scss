@@ -170,6 +170,7 @@
     }
 
     .profile-pic {
+      flex: 0 0 rem(39);
       height: rem(39);
       margin-right: rem(22);
       width: rem(39);
@@ -289,6 +290,8 @@
   }
 
   &__number--like {
+    align-items: center;
+    display: flex;
     color: $clr-desktop-link;
     cursor: pointer;
     font-size: rem($font-size-base);
@@ -322,7 +325,8 @@
     }
 
     .ajax-progress {
-      top: 0;
+      top: 50%;
+      left: 50%;
     }
   }
 
@@ -491,7 +495,8 @@
     }
 
     .ajax-progress {
-      top: rem(20);
+      left: 50%;
+      top: 50%;
     }
   }
 }

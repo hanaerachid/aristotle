@@ -7,10 +7,17 @@ form {
     &[id*='remove'] {
       @extend .btn-border-red;
     }
+
+    ~ .form-submit,
+    ~ .button {
+      margin-left: rem(50);
+    }
   }
 
   #edit-unpublish,
-  #edit-delete {
+  #edit-delete,
+  #edit-actions-delete,
+  #edit-cancel {
     @extend .btn;
     @extend .btn-rounded;
     @extend .btn-border-red;
@@ -80,9 +87,12 @@ form {
 
   .btn-reset-filter {
     background: $clr-white;
+    border-color: $clr-desktop-button-color;
+    color: $clr-desktop-button-text-secondary;
 
     &:hover {
-      background-color: $clr-desktop-button-color-hover-secondary
+      background-color: $clr-desktop-button-color-hover-secondary;
+      color: $clr-desktop-button-text-secondary;
     }
   }
 }

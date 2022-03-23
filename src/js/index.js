@@ -215,7 +215,7 @@ import 'bootstrap-select'
   }, function(isTrue) {
     if (isTrue) {
       $('body').removeClass('open-filter menu-open open-message-list');
-      $('.catalog-filter, .opigno-lp-step-activity, .lp_progress_wrapper, .opigno_activity__wrapper').removeAttr('style');
+      $('.mobile-header-wrapper, .catalog-filter, .opigno-lp-step-activity, .lp_progress_wrapper, .opigno_activity__wrapper').removeAttr('style');
     }
   });
 }(jQuery, Drupal, drupalSettings));

@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
 
-  .toolbar-horizontal.toolbar-tray-open & {
-    top: rem(79);
+  .toolbar-vertical.toolbar-fixed &,
+  .toolbar-horizontal.toolbar-fixed & {
+    top: rem(39);
   }
 
-  .toolbar-fixed & {
-    top: rem(39);
+  .toolbar-horizontal.toolbar-tray-open & {
+    top: rem(79);
   }
 
   .step-pager {
