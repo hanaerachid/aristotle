@@ -33,6 +33,19 @@
     padding: 0;
     width: rem(20);
   }
+
+  .restricted-text {
+    text-align: center;
+
+    .content-box__title {
+      font-size: rem(22);
+      margin-bottom: rem(10);
+
+      @include media-breakpoint-down(lg) {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .comment-form {
@@ -224,6 +237,16 @@
       &.link-bold {
         cursor: pointer;
         font-weight: $font-weight-bold;
+      }
+
+      &.shared-content-link {
+        color: $clr-desktop-text;
+        &:hover {
+          .group--preview {
+            background-color: $clr-gray-light;
+          }
+          text-decoration: none;
+        }
       }
     }
 

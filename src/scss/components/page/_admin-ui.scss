@@ -515,6 +515,7 @@
 
     #edit-submit {
       background: $clr-white url(../images/design/fi-rr-angle-small-right.svg) right 8px center/22px no-repeat;
+      color: $clr-desktop-button-text-secondary;
       margin-left: auto;
       order: 1;
 
@@ -648,6 +649,49 @@
 
       .form-textarea {
         max-width: 100%;
+      }
+    }
+  }
+
+  .user-admin-permissions {
+    .real-checkbox {
+      &:not(:checked) {
+        ~ label.option {
+          &:before {
+            background: none;
+            border-color: $clr-desktop-text;
+          }
+        }
+      }
+
+      &:disabled {
+        ~ label.option {
+          &:before {
+            background: $clr-gray-light-D5;
+            border-color: $clr-gray-light-D5;
+          }
+        }
+      }
+    }
+
+    .dummy-checkbox {
+      display: none;
+
+      &:not([style*=display]) {
+        ~ label.option {
+          &:hover {
+            &:before {
+              background: $clr-gray-light-D5 !important;
+              box-shadow: none !important;
+            }
+          }
+
+          &:before {
+            background: $clr-gray-light-D5 !important;
+            border-color: $clr-gray-light-D5 !important;
+            box-shadow: none !important;
+          }
+        }
       }
     }
   }
@@ -1143,5 +1187,26 @@
 
   .form-submit {
     margin-top: rem(10);
+  }
+}
+
+.entities-list {
+  .rendered-entity {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    > div {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+
+    > input {
+      margin-left: 0;
+      margin-right: rem(10);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

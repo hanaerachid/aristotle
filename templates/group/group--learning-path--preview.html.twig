@@ -40,19 +40,32 @@
  */
 #}
 
+{% import _self as group_content %}
 {% set image = group_picture|render %}
 {% set description = content.field_learning_path_description|render|striptags|trim %}
-<div {{ attributes.addClass('post') }}>
-  <h2 class="post__title">{{ label }}</h2>
-  {% if image or description %}
-    <div class="post__body">
-      {% if image %}
-        <div class="post__image">{{ image }}</div>
-      {% endif %}
 
-      {% if description %}
-        <p>{{ description|length > 180 ? description|slice(0, 180) ~ ' ...' : description  }}</p>
-      {% endif %}
-    </div>
-  {% endif %}
-</div>
+{% if is_accessible %}
+  <a href="{{ url }}" class="shared-content-link">
+    {{ group_content.build_content(attributes, label, image, description) }}
+  </a>
+{% else %}
+  {{ group_content.build_content(attributes, label, image, description) }}
+{% endif %}
+
+{% macro build_content(attributes, label, image, description) %}
+  <div {{ attributes.addClass('post') }}>
+    <h2 class="post__title">{{ label }}</h2>
+    {% if image or description %}
+      <div class="post__body">
+        {% if image %}
+          <div class="post__image">{{ image }}</div>
+        {% endif %}
+
+        {% if description %}
+          <p>{{ description|length > 180 ? description|slice(0, 180) ~ ' ...' : description  }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}
+

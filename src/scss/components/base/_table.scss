@@ -350,7 +350,7 @@ td {
 
   .details-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .details-btn {
@@ -383,8 +383,8 @@ td {
   th,
   td {
     &:last-child {
-      padding-right: rem(20);
-      width: rem(70);
+      padding-right: rem(10);
+      width: rem(40);
 
       @include media-breakpoint-down(lg) {
         .col-right & {
@@ -426,11 +426,11 @@ td {
     }
 
     @include media-breakpoint-down(lg) {
-      width: rem(200);
+      width: rem(166);
     }
 
     @include media-breakpoint-down(md) {
-      width: rem(260);
+      width: rem(226);
     }
 
     a {
@@ -453,6 +453,56 @@ td {
       .col-right & {
         width: rem(105);
       }
+    }
+  }
+
+  .action {
+    text-align: center;
+    width: rem(90);
+
+    @include media-breakpoint-down(xl) {
+      width: rem(44);
+    }
+
+    > span {
+      display: flex;
+      justify-content: center;
+    }
+
+    .start-inactive,
+    .start,
+    .restart {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      font-size: 0;
+      height: rem(20);
+      overflow: hidden;
+      text-indent: -9999px;
+      transition: transform .2s ease-out;
+    }
+
+    .start {
+      background-image: url(../images/design/play.svg);
+      width: rem(17);
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+
+    .restart {
+      background-image: url(../images/design/restart.svg);
+      width: rem(20);
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+
+    .start-inactive {
+      background-image: url(../images/design/play_inactive.svg);
+      width: rem(17);
     }
   }
 }

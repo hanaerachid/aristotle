@@ -423,24 +423,23 @@ function aristotle_preprocess_block(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function aristotle_preprocess_menu(&$variables, $hook) {
-  if ($hook === 'menu__main' && $variables['logged_in'] === TRUE) {
-    // Add management dropdown menu block to the main menu.
-    try {
-      $block = Block::load('opigno_admin');
-      if (!$block || !$block->access('view')) {
-        return [];
-      }
-      $render = \Drupal::entityTypeManager()
-        ->getViewBuilder('block')
-        ->view($block);
+function aristotle_preprocess_menu__main(&$variables) {
+  if ($variables['logged_in'] !== TRUE) {
+    return;
+  }
+
+  // Add management dropdown menu block to the main menu.
+  try {
+    $block = Block::load('opigno_admin');
+    if (!$block || !$block->access('view')) {
+      return;
     }
-    catch (\Exception $e) {
-      \Drupal::logger('opigno_migration')->error($e->getMessage());
-    }
-    if (!empty($render)) {
-      $variables['management_menu'] = $render;
-    }
+    $variables['management_menu'] = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($block);
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('aristotle')->error($e->getMessage());
   }
 }
 
@@ -667,7 +666,11 @@ function aristotle_page_has_faded_background() {
  * Implements hook_preprocess_HOOK().
  */
 function aristotle_preprocess_select(&$variables) {
-  $variables['attributes']['class'][] = 'selectpicker';
+  // Do not add selectpicker to weight fields because it breaks draggable
+  // functionality.
+  if (!isset($variables['element']['#is_weight']) || !$variables['element']['#is_weight']) {
+    $variables["attributes"]["class"][] = 'selectpicker';
+  }
 }
 
 /**

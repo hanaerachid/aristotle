@@ -3,6 +3,10 @@ body.section-module {
     margin: 0;
     padding: 0 !important;
 
+    .dialog-off-canvas-main-canvas {
+      min-height: 99%;
+    }
+
     #toolbar-administration,
     .page-header,
     #block-aristotle-page-title,
@@ -17,12 +21,80 @@ body.section-module {
     }
 
     .module-title-wrapper {
+      margin-top: rem(10);
+      margin-bottom: rem(10);
+      display: flex;
+      right: 10px;
+      top: 10px;
+
       .fi-rr-compress {
         display: block;
       }
 
       .fi-rr-expand {
         display: none;
+      }
+    }
+
+    .back-btn,
+    .block-page-title-block h1,
+    .module-title,
+    .opigno_activity__wrapper label,
+    .page-footer {
+      display: none !important;
+    }
+
+    .opigno_activity__wrapper .module-title {
+      display: block !important;
+      width: 100%;
+      text-align: center;
+    }
+
+    .dialog-off-canvas-main-canvas {
+      .page-main,
+      .page-main>.container {
+        padding: 0 !important;
+      }
+    }
+
+    .content-box,
+    .opigno_activity {
+      box-shadow: none;
+      margin: 0;
+    }
+
+    .scorm-ui-player-iframe-wrapper {
+      iframe {
+        display: block;
+        min-height: calc(100vh - 80px);
+      }
+    }
+
+    .opigno_activity__wrapper {
+      .form-actions {
+        padding: 20px 20px 0;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      .scorm-ui-player-iframe-wrapper iframe {
+        min-height: calc(100vh - 160px);
+      }
+      .opigno_activity__wrapper {
+        .form-actions {
+          padding: 20px 10px 0;
+          input {
+            margin: 10px;
+            margin-left: 10px !important;
+            margin-right: 0 !important;
+            &:last-of-type {
+              margin-right: 10px !important;
+            }
+          }
+        }
+        .form-submit {
+          min-width: 130px;
+        }
       }
     }
   }
@@ -238,6 +310,7 @@ body.section-module {
     justify-content: center;
     height: rem(44);
     width: rem(44);
+    min-width: 44px;
 
     &:hover {
       font-size: rem(26);
@@ -276,6 +349,11 @@ body.section-module {
 
       #edit-back {
         background: none;
+        color: $clr-desktop-button-text-secondary;
+
+        &:hover {
+          background-color: $clr-desktop-button-color-hover-secondary;
+        }
       }
 
       .is-disabled {

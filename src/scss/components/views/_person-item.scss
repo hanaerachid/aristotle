@@ -35,6 +35,23 @@
           margin-bottom: rem(10);
         }
       }
+
+      .btn-connection {
+        flex: 0 0 auto;
+        min-width: rem(114);
+
+        &.accept {
+          background: $clr-desktop-button-color;
+
+          &:hover {
+            background: $clr-desktop-button-color-hover-primary;
+          }
+        }
+
+        &.decline {
+          border: 1px solid $clr-desktop-button-color;
+        }
+      }
     }
 
     .view-display-id-suggested & {
@@ -166,7 +183,36 @@
     justify-content: flex-end;
 
     .btn-connection {
-      min-width: rem(148);
+      margin-left: rem(20);
+      min-width: rem(114);
+
+      &.accept {
+        background: $clr-desktop-button-color;
+
+        &:hover {
+          background: $clr-desktop-button-color-hover-primary;
+        }
+      }
+
+      &.decline {
+        border: 1px solid $clr-desktop-button-color;
+      }
+
+      @include media-breakpoint-between(lg, xl) {
+        width: 100%;
+
+        + .btn-connection {
+          margin-top: rem(10);
+        }
+      }
+
+      @include media-breakpoint-between(sm, sm) {
+        width: 100%;
+
+        + .btn-connection {
+          margin-top: rem(10);
+        }
+      }
     }
   }
 }

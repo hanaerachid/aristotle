@@ -75,6 +75,7 @@
 .remove-button {
   background: none !important;
   border-color: $clr-red !important;
+  color: $clr-desktop-button-text-secondary;
 
   &:hover {
     background: $clr-red !important;
@@ -278,10 +279,11 @@
 
 .btn-connection {
   background: $clr-white;
-  border-radius: rem(10);
-  color: $clr-desktop-button-text-primary;
+  border: 1px solid transparent;
+  border-radius: rem(5);
+  color: $clr-desktop-button-text-secondary;
   font-weight: $font-weight-semibold;
-  padding: rem(6) rem(20);
+  padding: rem(5) rem(20);
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -385,8 +387,10 @@
   left: 4px;
   top: 20px;
 
-  .page-opigno-module-group-answer-form & {
+  .page-opigno-module-group-answer-form &,
+  .section-community & {
     display: block !important;
+    z-index: 1;
   }
 
   a {
@@ -523,6 +527,10 @@ fieldset:disabled a.btn {
   flex-wrap: wrap;
   justify-content: flex-end;
 
+  .manager-view & {
+    align-items: flex-start;
+  }
+
   .mat-button-toggle {
     align-items: center;
     background: $clr-white;
@@ -541,17 +549,108 @@ fieldset:disabled a.btn {
       margin-left: rem(10);
     }
 
+    + .guided-navigation-wrapper {
+      margin-left: auto;
+    }
+
     &.mat-button-toggle-checked {
       background: $clr-white;
     }
 
     &.activate {
       background: $clr-desktop-link;
+
+      ~ .detail-text {
+        display: block;
+      }
+
+      ~ .detail-text__free-nav {
+        display: none;
+      }
     }
 
     &:hover {
       box-shadow: 0 3px 6px rgba($clr-black, .3);
     }
+  }
+
+  .guided-navigation {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    padding: 0;
+
+    ~ .detail-text {
+      display: none;
+      max-width: 178px;
+    }
+
+    ~ .detail-text__free-nav {
+      display: block;
+    }
+
+    .mat-button-toggle-label-content {
+      padding-left: rem(45);
+      position: relative;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        transition: .3s ease;
+      }
+
+      &:before {
+        background: $clr-gray-light-D5;
+        border-radius: rem(7);
+        height: rem(14);
+        top: 3px;
+        width: rem(36);
+      }
+
+      &:after {
+        background: $clr-white;
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba($clr-black, .66);
+        height: rem(18);
+        top: 0;
+        width: rem(18);
+      }
+    }
+
+    &:hover {
+      box-shadow: none;
+
+      &:not(:checked) {
+        .mat-button-toggle-label-content {
+          &:after {
+            box-shadow: 0 1px 2px rgba($clr-black, .66), 0 0 0 5px rgba($clr-green, .8);
+          }
+        }
+      }
+    }
+
+    &.activate {
+      background: none;
+      box-shadow: none;
+
+      .mat-button-toggle-label-content {
+        &:before {
+          background: rgba($clr-green, .8);
+        }
+
+        &:after {
+          background: $clr-green;
+          left: rem(18);
+        }
+      }
+    }
+  }
+
+  .detail-text {
+    font-size: rem(12);
+    font-style: italic;
   }
 
   .mat-button-toggle-label-content {
@@ -560,6 +659,10 @@ fieldset:disabled a.btn {
     line-height: normal;
     padding: 0;
     text-transform: uppercase;
+
+    .manager-view & {
+      text-transform: none;
+    }
 
     .fi {
       font-size: rem(20);
@@ -635,6 +738,9 @@ fieldset:disabled a.btn {
   @extend .btn;
   @extend .btn-rounded;
   font-family: $font-family-sans-serif;
+  height: rem(240);
+  margin-top: rem(37);
+  width: rem(240);
 }
 
 .mat-radio-group {

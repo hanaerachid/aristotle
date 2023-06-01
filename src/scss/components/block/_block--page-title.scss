@@ -12,6 +12,43 @@
   }
 }
 
+.join-communities-page-title {
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-bottom: rem(10);
+
+  @include media-breakpoint-down(xs) {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  h1,
+  .btn {
+    margin-bottom: rem(10);
+  }
+
+  h1 {
+    @include media-breakpoint-down(md) {
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  .section-community & {
+    @include media-breakpoint-down(xs) {
+      justify-items: center;
+    }
+
+    h1 {
+      @include media-breakpoint-down(md) {
+        padding: 0 rem(55);
+        text-align: center;
+      }
+    }
+  }
+}
+
 .filter-section-title,
 .feed-section-title {
   margin: rem(20) 0;

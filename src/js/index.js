@@ -130,10 +130,10 @@ import 'bootstrap-select'
 
   Drupal.behaviors.expandInnerTable = {
     attach: function(context, settings) {
-      $('.details-btn', context).on('click', function(e) {
+      $('.details-btn', context).once().on('click', function(e) {
         e.preventDefault();
 
-        $(this).toggleClass('active').closest('tr').siblings().find('.inner-table').slideToggle();
+        $(this).toggleClass('active').closest('tr').next().find('.inner-table').slideToggle();
       });
     }
   };
@@ -210,12 +210,31 @@ import 'bootstrap-select'
     }
   };
 
+  Drupal.behaviors.yourCommunities = {
+    attach: function(context, settings) {
+      $('.your-community', context).on('click', '.content-box__title', function() {
+        if (window.innerWidth < 1200) {
+          $(this).toggleClass('expanded').next('.communities-list').slideToggle();
+        }
+      })
+    }
+  }
+
   $.resizeAction(function() {
     return window.innerWidth > 991
   }, function(isTrue) {
     if (isTrue) {
       $('body').removeClass('open-filter menu-open open-message-list');
       $('.mobile-header-wrapper, .catalog-filter, .opigno-lp-step-activity, .lp_progress_wrapper, .opigno_activity__wrapper').removeAttr('style');
+    }
+  });
+
+  $.resizeAction(function() {
+    return window.innerWidth >= 1200
+  }, function(isTrue) {
+    if (isTrue) {
+      $('.your-community .content-box__title').removeClass('expanded');
+      $('.communities-list').removeAttr('style');
     }
   });
 }(jQuery, Drupal, drupalSettings));

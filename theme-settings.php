@@ -133,7 +133,7 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface $
   }
 
   // Aristotle homepage settings.
-  $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings');
+  $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings') ?? [];
 
   $form['aristotle_home_page_settings'] = [
     '#type' => 'details',
@@ -146,7 +146,7 @@ function aristotle_form_system_theme_settings_alter(&$form, FormStateInterface $
     '#type' => 'checkbox',
     '#title' => t('Use a different homepage for anonymous users.'),
     '#description' => t('Check here if you want the theme to use a custom page for users that are not logged in.'),
-    '#default_value' => $aristotle_home_page_settings['aristotle_use_home_page_markup'],
+    '#default_value' => $aristotle_home_page_settings['aristotle_use_home_page_markup'] ?? FALSE,
   ];
 
   if (!$form_state->get('num_slides') && isset($aristotle_home_page_settings['aristotle_home_page_slides'])) {

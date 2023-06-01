@@ -165,6 +165,7 @@ form {
       .form-submit {
         background: $clr-white url(../images/design/send-navy.svg) rem(35) center/24px no-repeat;
         border: 2px solid $clr-desktop-button-color;
+        color: $clr-desktop-button-text-secondary;
         max-width: rem(156);
         padding-left: rem(30);
 

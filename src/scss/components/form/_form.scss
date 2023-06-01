@@ -13,6 +13,7 @@ form {
   }
 }
 
+.entity-browser-community-images-media-entity-browser-form.entity-browser-form,
 .entity-browser-media-entity-browser-groups-form.entity-browser-form,
 .entity-browser-media-entity-browser-badge-images-form.entity-browser-form {
   .form-item-widget {
@@ -109,6 +110,16 @@ form {
       color: $clr-desktop-text;
       text-decoration: underline;
     }
+  }
+}
+
+.entity-browser-community-images-media-entity-browser-form.entity-browser-form {
+  .dropzone {
+    padding: rem(14) rem(22);
+  }
+
+  .form-actions {
+    display: none;
   }
 }
 

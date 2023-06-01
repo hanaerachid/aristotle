@@ -80,6 +80,10 @@ img {
   object-fit: cover;
 }
 
+.h5p-content img {
+  object-fit: fill;
+}
+
 .profile-pic {
   border-radius: 50%;
   height: rem(50);
