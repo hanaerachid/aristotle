@@ -22,7 +22,7 @@ h6 {
   font-weight: $font-weight-bold;
   line-height: 1.35;
   margin: 0 0 .5em;
-  text-transform: uppercase;
+  text-transform: normal;
 }
 
 h1 {
@@ -85,7 +85,7 @@ img {
 }
 
 .profile-pic {
-  border-radius: 50%;
+  border-radius: 25%;
   height: rem(50);
   overflow: hidden;
   width: rem(50);

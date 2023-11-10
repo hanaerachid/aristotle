@@ -10,7 +10,11 @@
 
 // Configs
 $enable-grid-classes: true;
+$themes: (
+  light: (
 
+  )
+);
 // 1. Colors
 $clr-white: #fff;
 $clr-black: #000;
@@ -29,6 +33,7 @@ $clr-gray-light: #f5f5f5;
 $clr-gray-light-D5: #d5d5d5;
 $clr-gray: #a5a5a5;
 $gray-dark: #707070;
+$desktop-header-bg: green;
 
 // Be careful with the following colors. They use via color.module
 $clr-theme-primary: #2f9fca;
@@ -39,7 +44,7 @@ $clr-theme-warning: #ffc107;
 $clr-theme-info: #2f9fcb;
 $clr-header-link: #575756;
 $clr-header-link-active: #2f9fc9;
-$clr-header-background: #f4f4f5;
+$clr-header-background: #212146;
 $clr-content-text: #575755;
 $clr-content-link: #2f9fc8;
 $clr-content-link-active: #2f9fc7;
@@ -81,9 +86,9 @@ $clr-desktop-button-text-secondary: var(--desktop-button-text-secondary);
 // 2. Typography
 $rem-base: 16;
 
-$font-family-serif: Georgia, 'Times New Roman', Times, serif;
-$font-family-sans-serif: 'Montserrat', Geneva, Arial, Helvetica, sans-serif;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-serif: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
+$font-family-sans-serif: 'Noto Sans', Geneva, Arial, Helvetica, sans-serif;
+$font-family-monospace: 'Noto Sans Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 $font-family-base: $font-family-sans-serif;
 $font-family-header: $font-family-sans-serif;
@@ -288,7 +293,7 @@ $z-index: (
 $alert-padding-y:                   16;
 $alert-padding-x:                   16;
 $alert-margin-bottom:               16;
-$alert-border-radius:               0;
+$alert-border-radius:               0.6;
 $alert-link-font-weight:            $font-weight-bold;
 $alert-border-width:                0;
 

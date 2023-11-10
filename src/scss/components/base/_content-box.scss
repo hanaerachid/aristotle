@@ -1,6 +1,7 @@
 .content-box {
-  border-radius: rem(10);
-  box-shadow: 0 0 6px rgba($clr-black, .3);
+  border: 1px solid rgba($clr-black, .3);
+  border-radius: rem(4);
+  box-shadow: 0 0 0px rgba($clr-black, .3);
   margin-bottom: rem(20);
   overflow: hidden;
   padding: rem(20);
@@ -37,8 +38,8 @@
     font-size: rem($font-size-h2);
     font-weight: $font-weight-extrabold;
     margin-bottom: 15px;
-    text-align: center;
-    text-transform: uppercase;
+    text-align: left;
+    text-transform: normal;
 
     @include media-breakpoint-down(lg) {
       font-size: rem($font-size-h3);
@@ -574,7 +575,7 @@
   .name {
     font-weight: $font-weight-bold;
     line-height: normal;
-    text-transform: uppercase;
+    text-transform: normal;
 
     @include media-breakpoint-down(md) {
       font-size: rem(16);

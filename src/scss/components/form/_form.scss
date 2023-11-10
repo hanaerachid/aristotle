@@ -183,7 +183,7 @@ form {
   .form-number {
     background: $clr-gray-light;
     border: 1px solid $clr-gray-light-D5;
-    border-radius: rem(10);
+    border-radius: rem(4);
     color: $clr-desktop-text;
     outline: none;
     padding: rem(10) rem(20);
@@ -411,7 +411,7 @@ form {
       align-items: center;
       background-color: $clr-white;
       border: 2px solid $clr-desktop-button-color;
-      border-radius: rem(25);
+      border-radius: rem(4);
       color: $clr-desktop-button-text-primary;
       display: inline-flex;
       font-weight: $font-weight-semibold;
